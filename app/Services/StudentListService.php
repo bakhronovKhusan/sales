@@ -13,6 +13,7 @@ class StudentListService
     public function list(Request $request)
     {
         $date = $request->date ?? date('Y-m-d');
+        $branch_id = $request->branch_id ? 'and t_groups.branch_id = '.$request->branch_id :'';
         $result =  DB::select('SELECT
                                         t_students.created_at as students_created_at,
                                         t_groups.days,
@@ -53,6 +54,7 @@ class StudentListService
                                           )
                                         and (t_groups.created_at <= CONCAT("'.$date.'", " 23:59:59") or t_groups.updated_at <= CONCAT("'.$date.'", " 23:59:59"))
                                         and t_staff.id is not null
+                                        '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
         return ResourceStudentList::collection($result);
     }

@@ -12,39 +12,47 @@ class StudentListService
 {
     public function list(Request $request)
     {
-        $result = DB::table('t_group_student')
-                ->select('t_groups.created_at as group_created_at',
-                DB::raw('IFNULL( t_staff.id, "not exit!") as staff_id'),
-                                't_group_student.status',
-                                't_group_student.group_id',
-                                't_group_student.student_id',
-                DB::raw('CONCAT( IFNULL(t_students.name, ""), " ", IFNULL(t_students.surname, "")) as name'),
-                DB::raw('IFNULL( CONCAT(t_students.phone, ", ", t_students.phone2), t_students.phone) as phone'),
-                DB::raw('IFNULL( t_staff.certificate, "Not Exits!") as teacher_info'),
-                DB::raw('t_groups.time as group_time'),
-                DB::raw("CASE
-                                WHEN t_group_student.status='iG' THEN 'IN GROUP'
-                                WHEN t_group_student.status='wt' OR t_group_student.status='w' THEN 'DONT COME'
-                                WHEN t_group_student.status='np' THEN 'NOT PAID YET'
-                                WHEN t_group_student.status='a' THEN 'ACTIVE'
-                                ELSE '' END AS status_type"),
-                DB::raw('CONCAT( CONCAT(
-                                IFNULL(t_lead_report.demo_date, ""), " W",
-                                IFNULL((SELECT week_num FROM t_group_roadmap WHERE
-                                    t_group_roadmap.group_id = t_group_student.group_id
-                                    ORDER by t_group_roadmap.id DESC LIMIT 1), "-not")), " ",
-                                IFNULL(t_levels.name, ""), " ",
-                                IFNULL(t_groups.time, "")) as group_info'))
-                ->leftJoin('t_students', 't_students.id', '=', 't_group_student.student_id')
-                ->leftJoin('t_groups', 't_groups.id', '=', 't_group_student.group_id')
-                ->leftJoin('t_lead_report', 't_lead_report.student_id', '=', 't_students.id')
-                ->leftJoin('t_group_teacher', 't_group_teacher.group_id', '=', 't_group_student.group_id')
-                ->leftJoin('t_staff', 't_staff.id', '=', 't_group_teacher.teacher_id')
-                ->leftJoin('t_levels', 't_levels.id', '=', 't_groups.level_id')
-                ->where('t_group_student.status', '=', ($request->type ?? 'iG'))
-                ->orderBy('group_time')
-                ->orderBy('group_created_at', 'desc')
-                ->get();
+        $result =  DB::select('SELECT
+                                        t_students.created_at as students_created_at,
+                                        t_groups.days,
+                                        t_groups.time as group_time,
+                                        IFNULL(t_staff.id, "not exit!") as staff_id,
+                                        t_group_student.status,
+                                        t_group_student.student_id,
+                                        t_group_student.group_id,
+                                        CONCAT(IFNULL(t_students.name, ""), " ", IFNULL(t_students.surname, "")) as name,
+                                        IFNULL(CONCAT(t_students.phone, ", ", t_students.phone2), t_students.phone) as phone,
+                                        IFNULL(t_staff.certificate, "Not Exits!") as teacher_info,
+                                        CASE
+                                            WHEN t_group_student.status="iG" THEN "IN GROUP"
+                                            WHEN t_group_student.status="wt" OR t_group_student.status="w" THEN "DONT COME"
+                                            WHEN t_group_student.status="np" THEN "NOT PAID YET"
+                                            WHEN t_group_student.status="a" THEN "ACTIVE"
+                                        END AS status_type,
+                                        CONCAT("https://app.cambridgeonline.uz/cheque/",t_group_student.group_id,"/",t_group_student.student_id) as check_url,
+                                        CONCAT(
+                                            CONCAT("W",
+                                                IFNULL((SELECT week_num FROM t_group_roadmap WHERE
+                                                      t_group_roadmap.group_id = t_group_student.group_id
+                                                      ORDER by t_group_roadmap.id DESC LIMIT 1),"-new")), " ",
+                                                IFNULL(t_levels.name, ""), " ",
+                                                IFNULL(t_groups.time, "")) as group_info
+                                    FROM t_group_student
+                                    LEFT JOIN t_students ON t_students.id = t_group_student.student_id
+                                    LEFT JOIN t_groups ON t_groups.id = t_group_student.group_id
+                                    LEFT JOIN t_group_teacher ON t_group_teacher.group_id = t_group_student.group_id
+                                    LEFT JOIN t_staff ON t_staff.id = t_group_teacher.teacher_id
+                                    LEFT JOIN t_levels ON t_levels.id = t_groups.level_id
+                                    WHERE t_group_student.status in ("iG", "wt", "w", "np")
+                                      AND (t_groups.status = "a" OR t_groups.status = "s")
+                                      AND (
+                                            (DAYOFWEEK(CURDATE()) IN (3, 5, 7) AND t_groups.days = "tts")
+                                            OR
+                                            (DAYOFWEEK(CURDATE()) IN (1, 2, 4, 6) AND t_groups.days = "mwf")
+                                          )
+                                        and (t_groups.created_at <= CONCAT("2023-09-24", " 23:59:59") or t_groups.updated_at <= CONCAT("2023-09-24", " 23:59:59"))
+                                        and t_staff.id is not null
+                                    ORDER BY t_groups.created_at DESC');
         return ResourceStudentList::collection($result);
     }
 }

@@ -13,9 +13,7 @@ class BaseResponse extends JsonResponse
         $result['code'] = $code;
         $result['message'] = $message;
         $result['data'] = $data;
-        return new JsonResponse([
-            $result
-        ], $code);
+        return new JsonResponse($result, $code);
     }
 
     public static function success($data = null, $code = null): JsonResponse
@@ -24,9 +22,7 @@ class BaseResponse extends JsonResponse
         $result['status'] = true;
         $result['code'] = $code;
         $result['data'] = $data;
-        return new JsonResponse([
-            $result
-        ], $code);
+        return new JsonResponse($result, $code);
     }
 
 }

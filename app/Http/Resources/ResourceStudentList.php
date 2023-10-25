@@ -15,7 +15,6 @@ class ResourceStudentList extends JsonResource
     public function toArray($request): array
     {
         return [
-            'group_created_at' => $this->group_created_at,
             'name'             => $this->name,
             'student_id'       => $this->student_id,
             'phone'            => $this->phone,
@@ -23,6 +22,7 @@ class ResourceStudentList extends JsonResource
             'group_info'       => $this->group_info,
             'status'           => $this->status_type,
             'group_id'         => $this->group_id,
+            'check_url'        => $this->check_url,
             'group_time'       => $this->group_time,
         ];
     }

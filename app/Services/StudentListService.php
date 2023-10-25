@@ -12,6 +12,7 @@ class StudentListService
 {
     public function list(Request $request)
     {
+        $date = $request->date ?? date('Y-m-d');
         $result =  DB::select('SELECT
                                         t_students.created_at as students_created_at,
                                         t_groups.days,
@@ -50,7 +51,7 @@ class StudentListService
                                             OR
                                             (DAYOFWEEK(CURDATE()) IN (1, 2, 4, 6) AND t_groups.days = "mwf")
                                           )
-                                        and (t_groups.created_at <= CONCAT("'.$request->date.'", " 23:59:59") or t_groups.updated_at <= CONCAT("'.$request->date.'", " 23:59:59"))
+                                        and (t_groups.created_at <= CONCAT("'.$date.'", " 23:59:59") or t_groups.updated_at <= CONCAT("'.$date.'", " 23:59:59"))
                                         and t_staff.id is not null
                                     ORDER BY t_groups.created_at DESC');
         return ResourceStudentList::collection($result);

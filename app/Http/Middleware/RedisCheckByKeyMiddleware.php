@@ -17,13 +17,20 @@ class RedisCheckByKeyMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $client = new Client([
+            'scheme' => 'tcp',
+            'host' => env('REDIS_HOST','192.168.0.2'),
+            'port' => env('REDIS_PORT',6379),
+            'password' => env('REDIS_PASSWORD','Gf4ezYLeNB32zvtTpkFQD/co0D8ZnrJKoqTbMBiyyQfbpEMyq8sZSy69MquluZIh$')
+        ]);
+
         $token = $request->bearerToken();
 
         if (!$token) {
             return response('Unauthorized', 401);
         }
 
-        if ((new Client)->exists($token)) {
+        if ($client->exists($token)) {
             return $next($request);
         }
 

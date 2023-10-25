@@ -16,6 +16,6 @@ use App\Http\Controllers\Hunter\HunterController;
 
 Route::group(['middleware' => 'redis.token.check'], function ($router) {
     Route::group(['prefix' => 'v1'], function ($router) {
-        Route::get('new-students-list{date?}', [HunterController::class, 'newStudentsList']);
+        Route::get('new-students-list/{date?}', [HunterController::class, 'newStudentsList']);
     });
 });

@@ -50,7 +50,7 @@ class StudentListService
                                             OR
                                             (DAYOFWEEK(CURDATE()) IN (1, 2, 4, 6) AND t_groups.days = "mwf")
                                           )
-                                        and (t_groups.created_at <= CONCAT("2023-09-24", " 23:59:59") or t_groups.updated_at <= CONCAT("2023-09-24", " 23:59:59"))
+                                        and (t_groups.created_at <= CONCAT("'.$request->date.'", " 23:59:59") or t_groups.updated_at <= CONCAT("'.$request->date.'", " 23:59:59"))
                                         and t_staff.id is not null
                                     ORDER BY t_groups.created_at DESC');
         return ResourceStudentList::collection($result);

@@ -50,7 +50,7 @@ class StudentListService
                                       AND (
                                             (DAYOFWEEK("'.$date.'") IN (3, 5, 7) AND t_groups.days = "tts")
                                             OR
-                                            (DAYOFWEEK(CURDATE()) IN (1, 2, 4, 6) AND t_groups.days = "mwf")
+                                            (DAYOFWEEK("'.$date.'") IN (1, 2, 4, 6) AND t_groups.days = "mwf")
                                           )
                                         and (t_groups.created_at <= CONCAT("'.$date.'", " 23:59:59") or t_groups.updated_at <= CONCAT("'.$date.'", " 23:59:59"))
                                         and t_staff.id is not null

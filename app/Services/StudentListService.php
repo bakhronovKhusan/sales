@@ -31,7 +31,8 @@ class StudentListService
                                             WHEN t_group_student.status="np" THEN "NOT PAID YET"
                                             WHEN t_group_student.status="a" THEN "ACTIVE"
                                         END AS status_type,
-                                        CONCAT("https://app.cambridgeonline.uz/cheque/",t_group_student.group_id,"/",t_group_student.student_id) as check_url,
+                                        CONCAT("https://sales-api.cambridgeonline.uz/api/v1/hunter/activate/",t_group_student.group_id,"/",t_group_student.student_id) as check_url,
+                                        CONCAT("https://sales-api.cambridgeonline.uz/api/v1/hunter/de-activate/",t_group_student.group_id,"/",t_group_student.student_id) as de_activate_check_url,
                                         CONCAT(
                                             CONCAT("W",
                                                 IFNULL((SELECT week_num FROM t_group_roadmap WHERE

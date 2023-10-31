@@ -28,7 +28,7 @@ class HunterController extends Controller
     {
         $student = GroupStudent::where('group_id',$group_id)->where('student_id',$student_id);
         if($student->first()->update(['status'=>StudentStatus::NOT_PAYING_AFTER_1_LESSON])){
-            return Redirect::to("https://app.cambridgeonline.uz/cheque/$group_id/$student_id");
+            return BaseResponse::success('Change status to NOT_PAYING successfully!');
         }
     }
 
@@ -36,7 +36,7 @@ class HunterController extends Controller
     {
         $student = GroupStudent::where('group_id',$group_id)->where('student_id',$student_id);
         if($student->first()->update(['status'=>StudentStatus::WAITING_TRIAL])){
-            return BaseResponse::success('Change status successfully!');
+            return BaseResponse::success('Change status to WAITING_TRIAL successfully!');
         }
     }
 }

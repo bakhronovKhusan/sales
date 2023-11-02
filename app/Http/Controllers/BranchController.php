@@ -22,7 +22,7 @@ class BranchController extends Controller
             $branch->where('company_id', $company_id);
         }
 
-        $branch = $branch->whereNotIn('id', [31, 31])->get();
+        $branch = $branch->whereNotIn('id', [31, 31])->toSql();
 
         return $branch;
     }

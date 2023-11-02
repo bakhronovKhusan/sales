@@ -15,7 +15,7 @@ class BranchController extends Controller
 
         if ($subdomain) {
             $branch->whereHas('company', function ($q) use ($subdomain) {
-                $q->where('subdomain', 'test');
+                $q->where('subdomain', '');
             });
         } else {
             $company_id = (isset($request->company_id)) ? $request->company_id : 1;

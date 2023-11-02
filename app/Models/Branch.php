@@ -9,7 +9,7 @@ use Wildside\Userstamps\Userstamps;
 
 class Branch extends Model{
 	use Userstamps;
-    protected $table = 't_branches';
+    protected $table = 'branches';
 	protected $fillable = [
 		'name', 'phone', 'address', 'location', 'website', 'email', 'facebook', 'telegram', 'instagram', 'youtube', 'bank_name', 'bank_account', 'bank_code', 'inn', 'company_id', 'max_times'
 	];

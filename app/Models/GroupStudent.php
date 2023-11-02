@@ -13,7 +13,7 @@ class GroupStudent extends Model
     use Userstamps;
 
     // protected $primaryKey = null;
-    protected $table = 't_group_student';
+    protected $table = 'group_student';
 
     protected $primaryKey = ['group_id', 'student_id'];
 

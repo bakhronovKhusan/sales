@@ -11,11 +11,12 @@ class BranchController extends Controller
     {
         $branch = $branch->newQuery();
 
-        $subdomain = Helper::getSubdomain($request->headers->get('referer'));
+//        $subdomain = Helper::getSubdomain($request->headers->get('referer'));
+        $subdomain = '';
 
         if ($subdomain) {
             $branch->whereHas('company', function ($q) use ($subdomain) {
-                $q->where('subdomain', '');
+                $q->where('subdomain', $subdomain);
             });
         } else {
             $company_id = (isset($request->company_id)) ? $request->company_id : 1;

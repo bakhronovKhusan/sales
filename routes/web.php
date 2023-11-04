@@ -12,6 +12,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/',function (){
-    return view('welcome');
+Route::get('/demo_keeper',function (){
+    return view('demo_keeper');
+});
+
+Route::get('/offline_hunter',function (){
+    return view('offline_hunter');
+});
+
+Route::get('/online_hunter',function (){
+    return view('online_hunter');
 });

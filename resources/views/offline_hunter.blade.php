@@ -45,7 +45,7 @@
         <div class="tab-content">
             <div class="tab-pane active" id="demo_keeper" role="tabpanel" aria-labelledby="demo_keeper-tab">
                 <div>
-                    <table class="table">
+                    <table class="table" style="height: 300px; overflow-x: auto;">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -71,7 +71,7 @@
 
             </div>
             <div class="tab-pane" id="offline_hunter" role="tabpanel" aria-labelledby="offline_hunter-tab">
-                <table class="table">
+                <table class="table" style="height: 300px; overflow-x: auto;">
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -96,7 +96,7 @@
             </div>
             <div class="tab-pane" id="online_hunter" role="tabpanel" aria-labelledby="online_hunter-tab">
                 <table class="table">
-                    <thead>
+                    <thead style="height: 300px; overflow-x: auto;">
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
@@ -106,7 +106,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(row, index) in tableData">
+                    <tr v-for="(row, index) in tableData" >
                         <td>@{{ row.id }}</td>
                         <td>@{{ row.name }}</td>
                         <td>@{{ row.phone }} @{{ row.phone2 }}</td>

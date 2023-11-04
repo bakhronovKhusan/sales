@@ -83,7 +83,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(row, index) in tableDataInGroup.students_in_waiting_trial">
+                        <tr v-for="(row, index) in tableDataInGroup">
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
@@ -109,7 +109,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(row, index) in tableDataMissedTrial.students_in_waiting" >
+                        <tr v-for="(row, index) in tableDataMissedTrial" >
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
@@ -160,14 +160,11 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    // console.log("missed_trial ",response.data)
-                    // this.tableDataMissedTrial = response.data
-                    response.data.forEach( (item) => {
-                        item.students_in_waiting_trial.forEach( (el) => {
+                    response.data.forEach((item) => {
+                        item.students_in_waiting_trial.forEach((el) => {
                                 this.tableDataMissedTrial.push(el)
                         })
                     });
-                    console.log(this.tableDataMissedTrial)
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -180,13 +177,11 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    response.data.forEach(function (item){
-                        item.students_in_waiting.forEach(function (el) {
-                            // console.log('this.tableDataInGroup', el)
+                    response.data.forEach((item)=>{
+                        item.students_in_waiting.forEach((el)=>{
+                            this.tableDataInGroup.push(el)
                         })
                     });
-                    // console.log("in_group ",response.data)
-
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

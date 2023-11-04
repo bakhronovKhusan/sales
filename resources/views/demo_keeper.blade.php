@@ -132,9 +132,9 @@
         el: '#demo_keeper',
         data: {
             token: token,
-            tableDataWaitingNew: {},
-            tableDataInGroup: {},
-            tableDataMissedTrial: {},
+            tableDataWaitingNew: [],
+            tableDataInGroup: [],
+            tableDataMissedTrial: [],
             pageCount: 0
         },
         methods: {
@@ -164,7 +164,7 @@
                     // this.tableDataMissedTrial = response.data
                     response.data.forEach(function (item){
                         item.students_in_waiting_trial.forEach(function (el) {
-                            this.tableDataMissedTrial.push(el)
+                            this.tableDataMissedTrial[]=el
                             console.log('this.tableDataMissedTrial', el)
                         })
                     });

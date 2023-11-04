@@ -132,9 +132,9 @@
         el: '#demo_keeper',
         data: {
             token: token,
-            tableDataWaitingNew: [],
-            tableDataInGroup: [],
-            tableDataMissedTrial: [],
+            tableDataWaitingNew: {},
+            tableDataInGroup: {},
+            tableDataMissedTrial: {},
             pageCount: 0
         },
         methods: {

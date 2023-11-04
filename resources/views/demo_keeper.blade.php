@@ -95,8 +95,8 @@
                 </table>
             </div>
             <div class="tab-pane" id="missed_trial" role="tabpanel" aria-labelledby="missed_trial-tab">
-                <table class="table">
-                    <thead style="height: 300px; overflow-x: auto;">
+                <table class="table" style="height: 300px; overflow-x: auto;">
+                    <thead >
                     <tr>
                         <th>ID</th>
                         <th>Name</th>

@@ -3,12 +3,13 @@
 namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Wildside\Userstamps\Userstamps;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
 
-class User extends Authenticatable{
+class User extends Authenticatable implements JWTSubject {
 
     use Notifiable, Userstamps, HasRoles;
     protected $guard_name = 'api';
@@ -60,5 +61,20 @@ class User extends Authenticatable{
             }
         }
         return $permissions;
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

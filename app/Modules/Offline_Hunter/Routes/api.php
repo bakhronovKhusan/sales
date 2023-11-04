@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\LevelController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -16,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'redis.token.check'], function ($router) {
     Route::group(['prefix' => 'v1/offline_hunter'], function ($router) {
-        Route::get('test', function (){
-            return "offline_hunter";
-        });
+        Route::get('get_all_branches_with_group_count', [BranchController::class,  'get_all_branches_with_group_count']);
+        Route::get('levels_with_students/{branch_id}',  [LevelController::class,   'levels_with_students']);
+        Route::get('students_lead/{branch_id}',         [StudentController::class, 'students_lead']);
     });
 });

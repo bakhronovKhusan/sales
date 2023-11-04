@@ -78,7 +78,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>Teacher</th>
+                            <th>Level</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -87,7 +87,7 @@
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
-                            <td>@{{ row.staff }}</td>
+                            <td>@{{ row.first_level }}</td>
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
                             </td>
@@ -164,7 +164,7 @@
                                 this.tableDataMissedTrial.push(el)
                         })
                     });
-                    console.log('tableDataMissedTrial',this.tableDataMissedTrial)
+
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -177,12 +177,12 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
+                    console.log(response)
                     response.data.forEach((item)=>{
                         item.students_in_waiting.forEach((el)=>{
                             this.tableDataInGroup.push(el)
                         })
                     });
-                    console.log('tableDataInGroup',this.tableDataInGroup)
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

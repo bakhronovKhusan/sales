@@ -28,7 +28,10 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Modules\\Demo_keeper\\": "app/Modules/Demo_keeper/",
+            "Modules\\Offline_Hunter\\": "app/Modules/Offline_Hunter/",
+            "Modules\\Online_Hunter\\": "app/Modules/Online_Hunter/"
         }
     },
     "autoload-dev": {

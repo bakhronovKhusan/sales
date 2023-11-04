@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Hunter;
+namespace App\Modules\Offline_Hunter\Controllers;
 
 use App\Enums\StudentStatus;
 use App\Http\Controllers\Controller;
@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Redirect;
 
-class HunterController extends Controller
+class OfflineController extends Controller
 {
     private StudentListService $service;
 

@@ -146,7 +146,7 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    console.log(response)
+                    console.log("waiting_new ",response.data)
                     this.tableDataWaitingNew = response.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
@@ -160,7 +160,7 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    console.log(response)
+                    console.log("missed_trial ",response.data)
                     this.tableDataMissedTrial = response.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
@@ -174,7 +174,7 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    console.log(response)
+                    console.log("in_group ",response.data)
                     this.tableDataInGroup = response.data
                 } catch (error) {
                     console.error('Error uploading article:', error);

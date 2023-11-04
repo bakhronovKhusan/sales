@@ -74,7 +74,7 @@ class Staff extends Model
 
     public function attendances()
     {
-        return $this->hasMany('App\Models\Models\StaffAttendance');
+        return $this->hasMany('App\Models\StaffAttendance');
     }
 
     public function user()
@@ -85,7 +85,7 @@ class Staff extends Model
     public function branches()
     {
         return $this->belongsToMany(
-            'App\Models\Models\Branch',
+            'App\Models\Branch',
             'branch_staff',
             'staff_id',
             'branch_id'

@@ -8,7 +8,7 @@ use Wildside\Userstamps\Userstamps;
 
 class Student extends Model
 {
-    public $connection="mysql2";
+//    public $connection="mysql2";
     use Userstamps;
     public $absent_limit;
     protected $fillable = [

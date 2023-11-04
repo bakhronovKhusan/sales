@@ -7,7 +7,7 @@ use Wildside\Userstamps\Userstamps;
 
 class Track extends Model
 {
-	public $connection="mysql2";
+//	public $connection="mysql2";
 	use Userstamps;
 
  	protected $fillable = [

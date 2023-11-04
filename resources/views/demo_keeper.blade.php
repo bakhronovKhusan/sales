@@ -162,10 +162,10 @@
                     });
                     // console.log("missed_trial ",response.data)
                     // this.tableDataMissedTrial = response.data
-                    response.data.forEach(function (item){
-                        item.students_in_waiting_trial.forEach(function (el) {
-                            self.tableDataMissedTrial.push(el)
-                            console.log('this.tableDataMissedTrial', el)
+                    response.data.forEach( (item) => {
+                        item.students_in_waiting_trial.forEach( (el) => {
+                                this.tableDataMissedTrial.push(el)
+                                console.log('this.tableDataMissedTrial', el)
                         })
                     });
                 } catch (error) {

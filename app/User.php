@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
-use Illuminate\Notifications\Notifiable;
+namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Wildside\Userstamps\Userstamps;
-use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements JWTSubject {
 

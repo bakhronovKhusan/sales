@@ -2,17 +2,13 @@
 
 namespace App\Components;
 
-use App\Models\Balance;
 use App\BranchGeneralReport;
 use App\ExamDates;
+use App\Models\Balance;
 use App\Models\Group;
 use App\Models\GroupStudent;
 use App\Models\Staff;
 use App\Student;
-use App\Models\StudentsReport;
-use App\Models\TrialStudent;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class Helper

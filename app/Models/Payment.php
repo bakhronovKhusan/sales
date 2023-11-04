@@ -1,9 +1,8 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use Wildside\Userstamps\Userstamps;
 
 class Payment extends Model{
@@ -268,6 +267,6 @@ class Payment extends Model{
 	public function ecreator()
     {
         // return $this->belongsTo('App\Models\SmsReport','sms_report_id','id')->withDefault();
-        return $this->belongsTo('App\Models\User','created_by','id');
+        return $this->belongsTo('App\User','created_by','id');
     }
 }

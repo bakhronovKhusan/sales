@@ -263,7 +263,7 @@ class Student extends Model
 
     public function user()
     {
-        return $this->hasOne('App\Models\User', 'type_id')->where('type', 'student');
+        return $this->hasOne('App\User', 'type_id')->where('type', 'student');
     }
 
     public function payment_for_a_lesson()

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Wildside\Userstamps\Userstamps;
 
 // use Illuminate\Database\Eloquent\SoftDeletes;
-use Wildside\Userstamps\Userstamps;
 
 class GroupStudent extends Model
 {
@@ -106,7 +106,7 @@ class GroupStudent extends Model
     public function ecreator()
     {
         // return $this->belongsTo('App\SmsReport','sms_report_id','id')->withDefault();
-        return $this->belongsTo('App\Models\User', 'exception_created_by', 'id');
+        return $this->belongsTo('App\User', 'exception_created_by', 'id');
     }
 
     public function student()

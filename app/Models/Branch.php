@@ -1,10 +1,7 @@
 <?php
 namespace App\Models;
 
-use App\Models\Track;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
 
 class Branch extends Model{
@@ -52,7 +49,7 @@ class Branch extends Model{
 
 	public function getConversionAttribute()
 	{
-		$users = User::role(['Administrator','Manager','Senior Manager'])
+		$users = \App\User::role(['Administrator','Manager','Senior Manager'])
             ->whereHas('staff',function($q){
                 $q->whereHas('branches',function($qq){
                     $qq->where('id',$this->id);

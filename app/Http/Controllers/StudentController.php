@@ -20,7 +20,7 @@ class StudentController extends Controller
                 ->where(['type' => 'staff'])
                 ->with('staff')
                 ->pluck('type_id')->toArray();
-
+            dd($administrators);
             $sts = Student::join("leads", "leads.student_id", "=", "students.id")
                 ->join("staff", "leads.staff_id", "=", "staff.id")
                 ->where([

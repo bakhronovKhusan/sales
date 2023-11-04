@@ -136,7 +136,7 @@
         methods: {
             async getDemoDataWaitingNew() {
                 try {
-                    const response = await axios.get(`/api/v1/waiting_new/status/waiting_new/9`, {
+                    const response = await axios.get(`/api/v1/demo_keeper/status/waiting_new/9`, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': `Bearer ${this.token}`,

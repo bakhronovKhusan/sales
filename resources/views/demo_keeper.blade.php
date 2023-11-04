@@ -165,9 +165,9 @@
                     response.data.forEach( (item) => {
                         item.students_in_waiting_trial.forEach( (el) => {
                                 this.tableDataMissedTrial.push(el)
-                                console.log('this.tableDataMissedTrial', el)
                         })
                     });
+                    console.log(this.tableDataMissedTrial)
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -182,7 +182,7 @@
                     });
                     response.data.forEach(function (item){
                         item.students_in_waiting.forEach(function (el) {
-                            console.log('this.tableDataInGroup', el)
+                            // console.log('this.tableDataInGroup', el)
                         })
                     });
                     // console.log("in_group ",response.data)

@@ -44,7 +44,7 @@
         <!-- Tab panes -->
         <div class="tab-content" id="demo_keeper">
             <div class="tab-pane active" id="waiting_new" role="tabpanel" aria-labelledby="waiting_new-tab">
-                <div style="height: 300px; overflow-x: auto;">
+                <div style="height: 500px; overflow-x: auto;">
                     <table class="table">
                         <thead>
                         <tr>
@@ -71,7 +71,7 @@
 
             </div>
             <div class="tab-pane" id="in_group" role="tabpanel" aria-labelledby="in_group-tab">
-                <div style="height: 300px; overflow-x: auto;">
+                <div style="height: 500px; overflow-x: auto;">
                     <table class="table" >
                         <thead>
                         <tr>
@@ -83,7 +83,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(row, index) in tableDataInGroup">
+                        <tr v-for="(row, index) in tableDataInGroup.students_in_waiting_trial">
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="tab-pane" id="missed_trial" role="tabpanel" aria-labelledby="missed_trial-tab">
-                <div style="height: 300px; overflow-x: auto;">
+                <div style="height: 500px; overflow-x: auto;">
                     <table class="table">
                         <thead >
                         <tr>
@@ -109,7 +109,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(row, index) in tableDataMissedTrial" >
+                        <tr v-for="(row, index) in tableDataMissedTrial.students_in_waiting" >
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>

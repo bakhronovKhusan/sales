@@ -24,6 +24,7 @@ class LevelController extends Controller
                     $q->where('level_student.sms_count',$request->sms);
                 $q->orderBy('level_student.created_at','DESC');
             }])->get();
+        dd("Stope");
         return $q;
     }
     public function levels_with_students_trial($branch_id,Request $request){

@@ -26,32 +26,97 @@
 </head>
 <body>
 <div style="width: 100%;padding: 10px">
+    <h4>Example Sales</h4>
     <div class="container">
-        <!-- Nav tabs -->
+
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Demo keeper</a>
+                <a class="nav-link active" id="demo_keeper-tab" data-toggle="tab" href="#demo_keeper" role="tab" aria-controls="demo_keeper" aria-selected="true">Demo keeper</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Offline Hunter</a>
+                <a class="nav-link" id="offline_hunter-tab" data-toggle="tab" href="#offline_hunter" role="tab" aria-controls="offline_hunter" aria-selected="false">Offline Hunter</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Online Hunter</a>
+                <a class="nav-link" id="online_hunter-tab" data-toggle="tab" href="#online_hunter" role="tab" aria-controls="online_hunter" aria-selected="false">Online Hunter</a>
             </li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <table>
+            <div class="tab-pane active" id="demo_keeper" role="tabpanel" aria-labelledby="demo_keeper-tab">
+                <div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Teacher</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(row, index) in tableData">
+                            <td>@{{ row.id }}</td>
+                            <td>@{{ row.name }}</td>
+                            <td>@{{ row.phone }} @{{ row.phone2 }}</td>
+                            <td>@{{ row.staff }}</td>
+                            <td>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
+            </div>
+            <div class="tab-pane" id="offline_hunter" role="tabpanel" aria-labelledby="offline_hunter-tab">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Teacher</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(row, index) in tableData">
+                        <td>@{{ row.id }}</td>
+                        <td>@{{ row.name }}</td>
+                        <td>@{{ row.phone }} @{{ row.phone2 }}</td>
+                        <td>@{{ row.staff }}</td>
+                        <td>
+                            <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                        </td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <p>Profile content goes here...</p>
-            </div>
-            <div class="tab-pane" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <p>Contact content goes here...</p>
+            <div class="tab-pane" id="online_hunter" role="tabpanel" aria-labelledby="online_hunter-tab">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Teacher</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(row, index) in tableData">
+                        <td>@{{ row.id }}</td>
+                        <td>@{{ row.name }}</td>
+                        <td>@{{ row.phone }} @{{ row.phone2 }}</td>
+                        <td>@{{ row.staff }}</td>
+                        <td>
+                            <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -60,29 +125,14 @@
 <script>
     let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FtYnJpZGdlb25saW5lLnV6L2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNjk5MTA0NDg0LCJleHAiOjE2OTkxMDUzODQsIm5iZiI6MTY5OTEwNDQ4NCwianRpIjoidGpCbjJJUkFFdVNxb2dUWiIsInN1YiI6IjMiLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.rYhXu1uoLM19Ljmpuj5ahOVChF_vxqNcgup60ukRga8"
     new Vue({
-        el: '#articles',
+        el: '#demo_keeper',
         data: {
-            article: {
-                title: '',
-                content: '',
-                image: null,
-                imageUrl: null
-            },
             token: token,
             tableData: [],
             pageCount: 0
         },
         methods: {
-            async getDemoData() {
-                // const formData = new FormData();
-                // console.log(this.article.title,this.article.content, this.article.image)
-                // formData.append('_method', 'PUT');
-                // formData.append('title', this.article.title);
-                // formData.append('content', this.article.content);
-                // if(typeof this.article.image=='object') {
-                //     formData.append('image', this.article.image);
-                // }
-
+            async getDemoDataWaitingNew() {
                 try {
                     const response = await axios.get(`/api/v1/demo_keeper/status/waiting_new/9`, {
                         headers: {
@@ -91,13 +141,37 @@
                         },
                     });
                     console.log(response)
-                    this.article.title = '';
-                    this.article.content = '';
-                    this.article.image = null;
+                    this.tableData = response.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
-            }
+            },
+            async getDemoDataMissedTrial() {
+                try {
+                    const response = await axios.get(`api/v1/status/missed_trial/9`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+                    console.log(response)
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            },
+            async getDemoDataInGroup() {
+                try {
+                    const response = await axios.get(`api/v1/status/in_group/9`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+                    console.log(response)
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            },
         },
         mounted(){
             this.token = token;
@@ -105,7 +179,68 @@
                 console.error('User is not authenticated');
                 return;
             }
-            this.getDemoData();
+            this.getDemoDataWaitingNew();
+            this.getDemoDataInGroup();
+        }
+    });
+
+    new Vue({
+        el: '#offline_hunter',
+        data: {
+            token: token,
+            tableData: [],
+            pageCount: 0
+        },
+        methods: {
+            async getDemoDataWaitingNew() {
+                try {
+                    const response = await axios.get(`/api/v1/demo_keeper/status/waiting_new/9`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+                    console.log(response)
+                    this.tableData = response.data
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            },
+            async getDemoDataMissedTrial() {
+                try {
+                    const response = await axios.get(`api/v1/status/missed_trial/9`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+                    console.log(response)
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            },
+            async getDemoDataInGroup() {
+                try {
+                    const response = await axios.get(`api/v1/status/in_group/9`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+                    console.log(response)
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            },
+        },
+        mounted(){
+            this.token = token;
+            if (!this.token) {
+                console.error('User is not authenticated');
+                return;
+            }
+            this.getDemoDataWaitingNew();
+            this.getDemoDataInGroup();
         }
     });
 </script>

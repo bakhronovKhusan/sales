@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'redis.token.check'], function ($router) {
     Route::group(['prefix' => 'v1/demo_keeper'], function ($router) {
-        Route::get('waiting_new/{branch_id}',  [DemoController::class, 'students_lead']); //status => Waiting new
+        Route::group(['prefix' => 'v1/status'], function ($router) {
+            Route::get('waiting_new/{branch_id}',  [DemoController::class, 'students_lead']); //status => Waiting new
+        });
     });
 });

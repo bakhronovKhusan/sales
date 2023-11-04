@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable{
 
     use Notifiable, Userstamps, HasRoles;
-    protected $guard_name = 'web';
+    protected $guard_name = 'api';
 
     const LANG_UZB = 1;
     const LANG_RUS = 2;

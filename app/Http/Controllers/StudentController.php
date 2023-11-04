@@ -11,6 +11,7 @@ class StudentController extends Controller
     public function students_lead($branch_id)
     {
 //        if (auth()->user()->hasRole('Senior manager') || auth()->user()->hasRole('Manager') || auth()->user()->hasRole('IT Manager') || auth()->user()->hasRole('Analytic')) {
+        dd(User::role(['Administrator', 'Manager', 'Senior manager']));
             $administrators = User::role(['Administrator', 'Manager', 'Senior manager'])
                 ->whereHas('staff', function ($q) use ($branch_id) {
                     $q->whereHas('branches', function ($qq) use ($branch_id) {

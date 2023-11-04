@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'redis.token.check'], function ($router) {
     Route::group(['prefix' => 'v1/demo_keeper'], function ($router) {
-        Route::get('get_all_branches_with_group_count',        [BranchController::class,  'get_all_branches_with_group_count']);//get All Branches
-        Route::get('levels_with_students_trial/{branch_id}',   [LevelController::class,   'levels_with_students_trial']); //missed_trial
-        Route::get('students_lead/{branch_id}',                [StudentController::class, 'students_lead']); //status => Waiting new
-        Route::get('levels_with_students/{branch_id}',         [LevelController::class,   'levels_with_students']); //status => IN GROUP
+        Route::get('waiting_new/{branch_id}',  [DemoController::class, 'students_lead']); //status => Waiting new
     });
 });

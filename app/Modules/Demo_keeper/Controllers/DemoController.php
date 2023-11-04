@@ -6,7 +6,9 @@ use App\Enums\StudentStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Response\BaseResponse;
 use App\Models\GroupStudent;
+use App\Models\Student;
 use App\Services\StudentListService;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Redirect;
@@ -38,5 +40,29 @@ class DemoController extends Controller
         if($student->first()->update(['status'=>StudentStatus::WAITING_TRIAL])){
             return BaseResponse::success('Change status to WAITING_TRIAL successfully!');
         }
+    }
+
+    public function students_lead($branch_id)
+    {
+        $administrators = User::role(['Administrator', 'Manager', 'Senior manager'])
+            ->whereHas('staff', function ($q) use ($branch_id) {
+                $q->whereHas('branches', function ($qq) use ($branch_id) {
+                    $qq->where('id', $branch_id);
+                });
+            })
+            ->where(['type' => 'staff'])
+            ->with('staff')
+            ->pluck('type_id')->toArray();
+
+        $sts = Student::join("leads", "leads.student_id", "=", "students.id")
+            ->join("staff", "leads.staff_id", "=", "staff.id")
+            ->where([
+                'leads.status' => 1,
+                'leads.by' => 2,
+            ])
+            ->whereIn("leads.staff_id", $administrators)
+            ->select("students.*", "staff.name as staff")
+            ->get();
+        return $sts;
     }
 }

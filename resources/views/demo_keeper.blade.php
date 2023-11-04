@@ -164,7 +164,7 @@
                     // this.tableDataMissedTrial = response.data
                     response.data.forEach(function (item){
                         item.students_in_waiting_trial.forEach(function (el) {
-                            // this.tableDataMissedTrial.push(el)
+                            this.tableDataMissedTrial.push(el)
                             console.log('this.tableDataMissedTrial', el)
                         })
                     });

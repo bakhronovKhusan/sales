@@ -44,8 +44,8 @@
         <!-- Tab panes -->
         <div class="tab-content" id="demo_keeper">
             <div class="tab-pane active" id="waiting_new" role="tabpanel" aria-labelledby="waiting_new-tab">
-                <div>
-                    <table class="table" style="height: 300px; overflow-x: auto;">
+                <div style="height: 300px; overflow-x: auto;">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -71,52 +71,56 @@
 
             </div>
             <div class="tab-pane" id="in_group" role="tabpanel" aria-labelledby="in_group-tab">
-                <table class="table" style="height: 300px; overflow-x: auto;">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Teacher</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="(row, index) in tableDataInGroup">
-                        <td>@{{ row.id }}</td>
-                        <td>@{{ row.name }}</td>
-                        <td>@{{ row.phone }} @{{ row.phone2 }}</td>
-                        <td>@{{ row.staff }}</td>
-                        <td>
-                            <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div style="height: 300px; overflow-x: auto;">
+                    <table class="table" >
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Teacher</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(row, index) in tableDataInGroup">
+                            <td>@{{ row.id }}</td>
+                            <td>@{{ row.name }}</td>
+                            <td>@{{ row.phone }} @{{ row.phone2 }}</td>
+                            <td>@{{ row.staff }}</td>
+                            <td>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="tab-pane" id="missed_trial" role="tabpanel" aria-labelledby="missed_trial-tab">
-                <table class="table" style="height: 300px; overflow-x: auto;">
-                    <thead >
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Teacher</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="(row, index) in tableDataMissedTrial" >
-                        <td>@{{ row.id }}</td>
-                        <td>@{{ row.name }}</td>
-                        <td>@{{ row.phone }} @{{ row.phone2 }}</td>
-                        <td>@{{ row.staff }}</td>
-                        <td>
-                            <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div style="height: 300px; overflow-x: auto;">
+                    <table class="table">
+                        <thead >
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Teacher</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(row, index) in tableDataMissedTrial" >
+                            <td>@{{ row.id }}</td>
+                            <td>@{{ row.name }}</td>
+                            <td>@{{ row.phone }} @{{ row.phone2 }}</td>
+                            <td>@{{ row.staff }}</td>
+                            <td>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

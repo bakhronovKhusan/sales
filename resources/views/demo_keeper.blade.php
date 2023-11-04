@@ -146,7 +146,6 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    console.log("waiting_new ",response.data)
                     this.tableDataWaitingNew = response.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
@@ -165,6 +164,7 @@
                                 this.tableDataMissedTrial.push(el)
                         })
                     });
+                    console.log('tableDataMissedTrial',this.tableDataMissedTrial)
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -182,6 +182,7 @@
                             this.tableDataInGroup.push(el)
                         })
                     });
+                    console.log('tableDataInGroup',this.tableDataInGroup)
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

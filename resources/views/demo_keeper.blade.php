@@ -161,7 +161,12 @@
                         },
                     });
                     console.log("missed_trial ",response.data)
-                    this.tableDataMissedTrial = response.data
+                    // this.tableDataMissedTrial = response.data
+                    response.data.forEach(function (item){
+                        item.students_in_waiting_trial.forEach(function (el) {
+                            this.tableDataMissedTrial.push(el)
+                        })
+                    });
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -174,8 +179,13 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
+                    response.data.forEach(function (item){
+                        item.students_in_waiting.forEach(function (el) {
+                            this.tableDataInGroup.push(el)
+                        })
+                    });
                     console.log("in_group ",response.data)
-                    this.tableDataInGroup = response.data
+
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

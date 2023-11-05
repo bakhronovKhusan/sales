@@ -64,7 +64,10 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <a class="dropdown-item" href="#" v-b-modal.modal-page>Request</a>
+                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                    Request
+                                </button>
+
                             </td>
                         </tr>
                         </tbody>
@@ -95,7 +98,10 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <a class="dropdown-item" href="#" v-b-modal.modal-page>Request</a>
+                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                    Request
+                                </button>
+
                             </td>
                         </tr>
                         </tbody>
@@ -123,7 +129,9 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <a class="dropdown-item" href="#" v-b-modal.modal-page>Request</a>
+                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                    Request
+                                </button>
                             </td>
                         </tr>
                         </tbody>
@@ -134,9 +142,25 @@
     </div>
 </div>
 
-<b-modal id="modal-page" title="Modal Title">
-    <p class="my-4">Modal content goes here.</p>
-</b-modal>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Your modal content goes here.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 <script>

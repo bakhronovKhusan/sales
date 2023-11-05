@@ -216,6 +216,7 @@
             this.getDemoDataWaitingNew();
             this.getDemoDataMissedTrial();
             this.getDemoDataInGroup();
+            this.getAllBranch();
         }
     });
 </script>

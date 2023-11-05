@@ -191,6 +191,21 @@
                     console.error('Error uploading article:', error);
                 }
             },
+            async getAllBranch() {
+
+                try {
+                    const response = await axios.get(`api/v1/get_all_branches`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+
+                    console.log('get_all_branches',response)
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            },
         },
         mounted(){
             this.token = token;

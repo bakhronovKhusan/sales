@@ -64,7 +64,7 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" @click="selectStudent(row.id)" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
                                     Request
                                 </button>
 
@@ -98,7 +98,7 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" @click="selectStudent(row.id)" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
                                     Request
                                 </button>
 
@@ -129,7 +129,7 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <button type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" class="btn btn-outline-dark" @click="selectStudent(row.id)"  data-toggle="modal" data-target="#exampleModal">
                                     Request
                                 </button>
                             </td>

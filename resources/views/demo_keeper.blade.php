@@ -79,6 +79,7 @@
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Level</th>
+                            <th>Time</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -87,7 +88,8 @@
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }}</td>
-                            <td>@{{ row.teacher_info }}</td>
+                            <td>@{{ row.group_info }}</td>
+                            <td>@{{ row.group_time }}</td>
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
                             </td>

@@ -178,11 +178,7 @@
                         },
                     });
                     console.log(response)
-                    response.data.forEach((item)=>{
-                        item.students_in_waiting.forEach((el)=>{
-                            this.tableDataInGroup.push(el)
-                        })
-                    });
+                    this.tableDataInGroup = response.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

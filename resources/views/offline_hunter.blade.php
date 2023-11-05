@@ -34,10 +34,10 @@
                 <a class="nav-link active" id="waiting_new-tab" data-toggle="tab" href="#waiting_new" role="tab" aria-controls="waiting_new" aria-selected="true">Waiting New</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="in_group-tab" data-toggle="tab" href="#in_group" role="tab" aria-controls="in_group" aria-selected="false">In Group</a>
+                <a class="nav-link" id="meeting_connected-tab" data-toggle="tab" href="#meeting_connected" role="tab" aria-controls="meeting_connected" aria-selected="false">In Group</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="missed_trial-tab" data-toggle="tab" href="#missed_trial" role="tab" aria-controls="missed_trial" aria-selected="false">Missed Trial</a>
+                <a class="nav-link" id="paid_history-tab" data-toggle="tab" href="#paid_history" role="tab" aria-controls="paid_history" aria-selected="false">Missed Trial</a>
             </li>
         </ul>
 
@@ -62,7 +62,11 @@
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
                             <td>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
+                                <br>
+                                <button type="button" class="btn btn-outline-dark" @click="selectStudent(row.id)"  data-toggle="modal" data-target="#exampleModal">
+                                    Request
+                                </button>
                             </td>
                         </tr>
                         </tbody>
@@ -70,7 +74,7 @@
                 </div>
 
             </div>
-            <div class="tab-pane" id="in_group" role="tabpanel" aria-labelledby="in_group-tab">
+            <div class="tab-pane" id="meeting_connected" role="tabpanel" aria-labelledby="meeting_connected-tab">
                 <div style="height: 500px; overflow-x: auto;">
                     <table class="table" >
                         <thead>
@@ -83,20 +87,24 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(row, index) in tableDataInGroup">
+                        <tr v-for="(row, index) in meetingConnected">
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }}</td>
                             <td>@{{ row.teacher_info }}</td>
                             <td>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
+                                <br>
+                                <button type="button" class="btn btn-outline-dark" @click="selectStudent(row.id)"  data-toggle="modal" data-target="#exampleModal">
+                                    Request
+                                </button>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="tab-pane" id="missed_trial" role="tabpanel" aria-labelledby="missed_trial-tab">
+            <div class="tab-pane" id="paid_history" role="tabpanel" aria-labelledby="paid_history-tab">
                 <div style="height: 500px; overflow-x: auto;">
                     <table class="table">
                         <thead >
@@ -109,13 +117,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(row, index) in tableDataMissedTrial" >
+                        <tr v-for="(row, index) in paidHistory" >
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
                             <td>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
+                                <br>
+                                <button type="button" class="btn btn-outline-dark" @click="selectStudent(row.id)"  data-toggle="modal" data-target="#exampleModal">
+                                    Request
+                                </button>
                             </td>
                         </tr>
                         </tbody>
@@ -127,18 +139,18 @@
 </div>
 </body>
 <script>
-    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FtYnJpZGdlb25saW5lLnV6L2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNjk5MTA0NDg0LCJleHAiOjE2OTkxMDUzODQsIm5iZiI6MTY5OTEwNDQ4NCwianRpIjoidGpCbjJJUkFFdVNxb2dUWiIsInN1YiI6IjMiLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.rYhXu1uoLM19Ljmpuj5ahOVChF_vxqNcgup60ukRga8"
+    let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FtYnJpZGdlb25saW5lLnV6L2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNjk5MjIzNDg4LCJleHAiOjE2OTkyMjQzODgsIm5iZiI6MTY5OTIyMzQ4OCwianRpIjoieHFZaUJkd3RyUlhVVVh0MiIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0._FY5DO6kjpPEVE4aFgUbk3pYi9DFkKSxrFXCEevgG4c"
     new Vue({
         el: '#demo_keeper',
         data: {
             token: token,
             tableDataWaitingNew: [],
-            tableDataInGroup: [],
-            tableDataMissedTrial: [],
+            meetingConnected: [],
+            paidHistory: [],
             pageCount: 0
         },
         methods: {
-            async getDemoDataWaitingNew() {
+            async offlineHunterDataWaitingNew() {
                 try {
                     const response = await axios.get(`/api/v1/demo_keeper/status/waiting_new/9`, {
                         headers: {
@@ -151,7 +163,7 @@
                     console.error('Error uploading article:', error);
                 }
             },
-            async getDemoDataMissedTrial() {
+            async offlineHunterMeetingConnected() {
                 try {
                     const response = await axios.get(`api/v1/status/missed_trial/9`, {
                         headers: {
@@ -169,7 +181,7 @@
                     console.error('Error uploading article:', error);
                 }
             },
-            async getDemoDataInGroup() {
+            async offlineHunterPaymentInfo() {
                 try {
                     const response = await axios.get(`api/v1/status/in_group/9`, {
                         headers: {
@@ -183,6 +195,24 @@
                     console.error('Error uploading article:', error);
                 }
             },
+            async getAllBranch() {
+
+                try {
+                    const response = await axios.get(`api/v1/get_all_branches`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+
+                    console.log('get_all_branches',response)
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            },
+            async selectStudent(id) {
+                student_id = id
+            }
         },
         mounted(){
             this.token = token;
@@ -190,9 +220,10 @@
                 console.error('User is not authenticated');
                 return;
             }
-            this.getDemoDataWaitingNew();
-            this.getDemoDataMissedTrial();
-            this.getDemoDataInGroup();
+            this.offlineHunterDataWaitingNew();
+            this.offlineHunterMeetingConnected();
+            this.offlineHunterPaymentInfo();
+            this.getAllBranch();
         }
     });
 </script>

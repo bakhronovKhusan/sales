@@ -63,11 +63,11 @@
                             <td>@{{ row.staff }}</td>
                             <td>
                                 {{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="dropdown" >
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" :id="'dropdownMenuButton' + row.id" data-toggle="dropdown" aria-haspopup="true" :aria-expanded="false">
                                         Dropdown button
                                     </button>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu" :aria-labelledby="'dropdownMenuButton' + row.id">
                                         <a class="dropdown-item" href="#">Button1</a>
                                         <a class="dropdown-item" href="#">Button2</a>
                                     </div>
@@ -100,11 +100,11 @@
                             <td>@{{ row.group_info }}</td>
                             <td>@{{ row.group_time }}</td>
                             <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="dropdown" >
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" :id="'dropdownMenuButton' + row.id" data-toggle="dropdown" aria-haspopup="true" :aria-expanded="false">
                                         Dropdown button
                                     </button>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu" :aria-labelledby="'dropdownMenuButton' + row.id">
                                         <a class="dropdown-item" href="#">Button1</a>
                                         <a class="dropdown-item" href="#">Button2</a>
                                     </div>
@@ -135,11 +135,11 @@
                             <td>@{{ row.staff }}</td>
                             <td>
 {{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="dropdown" >
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" :id="'dropdownMenuButton' + row.id" data-toggle="dropdown" aria-haspopup="true" :aria-expanded="false">
                                         Dropdown button
                                     </button>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu" :aria-labelledby="'dropdownMenuButton' + row.id">
                                         <a class="dropdown-item" href="#">Button1</a>
                                         <a class="dropdown-item" href="#">Button2</a>
                                     </div>

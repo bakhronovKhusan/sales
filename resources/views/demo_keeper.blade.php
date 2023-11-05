@@ -178,7 +178,7 @@
                         },
                     });
                     console.log(response)
-                    this.tableDataInGroup = response.data
+                    this.tableDataInGroup = response.data.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

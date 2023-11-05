@@ -10,7 +10,7 @@ Route::group(['middleware' => 'redis.token.check'], function ($router) {
         Route::get('get_all_branches',        [BranchController::class,  'get_all_branches_with_group_count']);//get-All-Branches
         Route::group(['prefix' => 'status'], function ($router) {
             Route::get('missed_trial/{branch_id}', [LevelController::class,   'levels_with_students_trial']); //missed_trial
-            Route::get('in_group/{branch_id}',     [LevelController::class,   'levels_with_students']); //status => IN GROUP
+            Route::get('in_group/{branch_id}',     [LevelController::class,   'in_group']); //status => IN GROUP
         });
     });
 });

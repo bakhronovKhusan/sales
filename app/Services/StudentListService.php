@@ -45,7 +45,7 @@ class StudentListService
                                     LEFT JOIN t_group_teacher ON t_group_teacher.group_id = t_group_student.group_id
                                     LEFT JOIN t_staff ON t_staff.id = t_group_teacher.teacher_id
                                     LEFT JOIN t_levels ON t_levels.id = t_groups.level_id
-                                    WHERE t_group_student.status in ("iG", "wt", "w", "np")
+                                    WHERE t_group_student.status in ("iG")
                                       AND (t_groups.status = "a" OR t_groups.status = "s")
                                       AND (
                                             (DAYOFWEEK("'.$date.'") IN (3, 5, 7) AND t_groups.days = "tts")

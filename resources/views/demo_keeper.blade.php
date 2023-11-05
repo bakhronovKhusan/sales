@@ -209,8 +209,8 @@
                         <option value="p">Personal account access</option>
                     </select>
                 </div>
-                <div class="form-group"><label for="discount_sum" v-model="commentModel">Comment</label>
-                    <textarea type="text" class="form-control form-control-sm"></textarea></div>
+                <div class="form-group"><label for="discount_sum" >Comment</label>
+                    <textarea type="text" v-model="commentModel" class="form-control form-control-sm"></textarea></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

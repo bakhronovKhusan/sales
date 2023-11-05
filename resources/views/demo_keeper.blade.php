@@ -143,7 +143,7 @@
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" id="requestModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Send Request</h5>
@@ -151,7 +151,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" id="requestModal">
+            <div class="modal-body">
                 <div class="form-group">
                     <label for="discount_sum">Branch</label>
                     <select v-model="branchId" id="branch_id" placeholder="type" class="form-control form-control-sm">
@@ -214,7 +214,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" @click="sendRequest">Send</button>
+                <button type="button" class="btn btn-primary" @click="sendRequestTO">Send</button>
             </div>
         </div>
     </div>
@@ -320,7 +320,7 @@
             branchId: null
         },
         methods: {
-            async sendRequest() {
+            async sendRequestTO() {
                 try {
                     const params = {
                         branch_id: this.branchId,

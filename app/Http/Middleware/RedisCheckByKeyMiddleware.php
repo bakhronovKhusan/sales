@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Redis;
 use Predis\Client;
@@ -31,7 +33,15 @@ class RedisCheckByKeyMiddleware
         }
 
         if ($client->exists($token)) {
-            return $next($request);
+
+            $userId = $client->get($token);
+
+            // Manually authenticate the user
+            $user = User::find($userId);
+            if ($user) {
+                Auth::login($user);
+                return $next($request);
+            }
         }
 
         return response('Unauthorized', 401);

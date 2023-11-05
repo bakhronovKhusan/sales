@@ -32,6 +32,7 @@ class StudentController extends Controller
                 "request_type" => $request->type,
                 "comment_sender" => $request->comment,
             ]);
+            dd($request->type);
             if (($request->type == 'ar') || ($request->type == 'w') || ($request->type == 'o') || ($request->type == 'b')) {
                 $student = Student::select('name', 'phone')->whereId($request->student_id)->first();
                 $st_user = $student->name . ' (+998' . $student->phone . ')';

@@ -62,7 +62,16 @@
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
                             <td>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                                <div class="dropdown">
+{{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Mos guruh tanlash</a>
+                                        <a class="dropdown-item" href="#">Request</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
@@ -91,7 +100,16 @@
                             <td>@{{ row.group_info }}</td>
                             <td>@{{ row.group_time }}</td>
                             <td>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                                <div class="dropdown">
+{{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                        <a class="dropdown-item" href="#">Mos guruh tanlash</a>
+                                        <a class="dropdown-item" href="#">Request</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         </tbody>
@@ -117,7 +135,17 @@
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
                             <td>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+{{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
+                                <div class="dropdown">
+                                    {{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                        <a class="dropdown-item" href="#">Mos guruh tanlash</a>
+                                        <a class="dropdown-item" href="#">Request</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         </tbody>

@@ -129,7 +129,7 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" class="btn btn-outline-dark"  data-toggle="modal" data-target="#exampleModal">
                                     Request
                                 </button>
                             </td>
@@ -151,10 +151,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="requestModal">
                 <div class="form-group">
                     <label for="discount_sum">Branch</label>
-                    <select id="branch_id" placeholder="type" class="form-control form-control-sm">
+                    <select v-model="branchId" id="branch_id" placeholder="type" class="form-control form-control-sm">
                         <option></option>
                         <option value="7">
                             Darkhan
@@ -196,7 +196,7 @@
                 </div>
                 <div class="form-group">
                     <label for="discount_sum">Turi</label>
-                    <select id="discount_sum" placeholder="type" class="form-control form-control-sm">
+                    <select id="discount_sum" placeholder="type" class="form-control form-control-sm" v-model="typeModel">
                         <option value="ar">Archive</option>
                         <option value="fr">Freeze</option>
                         <option value="b">Balance</option>
@@ -209,12 +209,12 @@
                         <option value="p">Personal account access</option>
                     </select>
                 </div>
-                <div class="form-group"><label for="discount_sum">Comment</label>
+                <div class="form-group"><label for="discount_sum" v-model="commentModel">Comment</label>
                     <textarea type="text" class="form-control form-control-sm"></textarea></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" @click="sendRequest">Send</button>
             </div>
         </div>
     </div>
@@ -223,6 +223,7 @@
 </body>
 <script>
     let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FtYnJpZGdlb25saW5lLnV6L2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNjk5MTA0NDg0LCJleHAiOjE2OTkxMDUzODQsIm5iZiI6MTY5OTEwNDQ4NCwianRpIjoidGpCbjJJUkFFdVNxb2dUWiIsInN1YiI6IjMiLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.rYhXu1uoLM19Ljmpuj5ahOVChF_vxqNcgup60ukRga8"
+    let student_id = null;
     new Vue({
         el: '#demo_keeper',
         data: {
@@ -293,6 +294,9 @@
                     console.error('Error uploading article:', error);
                 }
             },
+            async selectStudent(id) {
+                student_id = id
+            }
         },
         mounted(){
             this.token = token;
@@ -304,6 +308,45 @@
             this.getDemoDataMissedTrial();
             this.getDemoDataInGroup();
             this.getAllBranch();
+        }
+    });
+
+    new Vue({
+        el: '#requestModal',
+        data: {
+            token: token,
+            commentModel: null,
+            typeModel: null,
+            branchId: null
+        },
+        methods: {
+            async sendRequest() {
+                try {
+                    const params = {
+                        branch_id: this.branchId,
+                        comment: this.commentModel,
+                        student_id: student_id,
+                        type: this.typeModel,
+                    };
+
+                    const response = await axios.post(`/api/v1/demo_keeper/status/waiting_new/9`, params, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'Authorization': `Bearer ${this.token}`,
+                        },
+                    });
+                    this.tableDataWaitingNew = response.data
+                } catch (error) {
+                    console.error('Error uploading article:', error);
+                }
+            }
+        },
+        mounted(){
+            this.token = token;
+            if (!this.token) {
+                console.error('User is not authenticated');
+                return;
+            }
         }
     });
 </script>

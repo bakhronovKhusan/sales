@@ -62,16 +62,9 @@
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
                             <td>
-                                {{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
-                                <div class="dropdown" >
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" :id="'dropdownMenuButton' + row.id" data-toggle="dropdown" aria-haspopup="true" :aria-expanded="false">
-                                        Dropdown button
-                                    </button>
-                                    <div class="dropdown-menu" :aria-labelledby="'dropdownMenuButton' + row.id">
-                                        <a class="dropdown-item" href="#">Button1</a>
-                                        <a class="dropdown-item" href="#">Button2</a>
-                                    </div>
-                                </div>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
+                                <br>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Request</button>
                             </td>
                         </tr>
                         </tbody>
@@ -100,15 +93,9 @@
                             <td>@{{ row.group_info }}</td>
                             <td>@{{ row.group_time }}</td>
                             <td>
-                                <div class="dropdown" >
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" :id="'dropdownMenuButton' + row.id" data-toggle="dropdown" aria-haspopup="true" :aria-expanded="false">
-                                        Dropdown button
-                                    </button>
-                                    <div class="dropdown-menu" :aria-labelledby="'dropdownMenuButton' + row.id">
-                                        <a class="dropdown-item" href="#">Button1</a>
-                                        <a class="dropdown-item" href="#">Button2</a>
-                                    </div>
-                                </div>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
+                                <br>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Request</button>
                             </td>
                         </tr>
                         </tbody>
@@ -134,16 +121,9 @@
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
                             <td>
-{{--                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>--}}
-                                <div class="dropdown" >
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" :id="'dropdownMenuButton' + row.id" data-toggle="dropdown" aria-haspopup="true" :aria-expanded="false">
-                                        Dropdown button
-                                    </button>
-                                    <div class="dropdown-menu" :aria-labelledby="'dropdownMenuButton' + row.id">
-                                        <a class="dropdown-item" href="#">Button1</a>
-                                        <a class="dropdown-item" href="#">Button2</a>
-                                    </div>
-                                </div>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
+                                <br>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Request</button>
                             </td>
                         </tr>
                         </tbody>

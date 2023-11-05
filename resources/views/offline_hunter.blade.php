@@ -31,13 +31,13 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="waiting_new-tab" data-toggle="tab" href="#waiting_new" role="tab" aria-controls="waiting_new" aria-selected="true">Waiting New</a>
+                <a class="nav-link active" id="waiting_new-tab" data-toggle="tab" href="#waiting_new" role="tab" aria-controls="waiting_new" aria-selected="true">Waiting New(iG)</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="meeting_connected-tab" data-toggle="tab" href="#meeting_connected" role="tab" aria-controls="meeting_connected" aria-selected="false">In Group</a>
+                <a class="nav-link" id="meeting_connected-tab" data-toggle="tab" href="#meeting_connected" role="tab" aria-controls="meeting_connected" aria-selected="false">Meeting Connected</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="paid_history-tab" data-toggle="tab" href="#paid_history" role="tab" aria-controls="paid_history" aria-selected="false">Missed Trial</a>
+                <a class="nav-link" id="paid_history-tab" data-toggle="tab" href="#paid_history" role="tab" aria-controls="paid_history" aria-selected="false">Paid/(not Paid)</a>
             </li>
         </ul>
 
@@ -62,7 +62,7 @@
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
-                            <td><button class="btn btn-outline-dark"> Check chiqarish </button></td>
+                            <td><button @click="getCheque" class="btn btn-outline-dark"> Check chiqarish </button></td>
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>

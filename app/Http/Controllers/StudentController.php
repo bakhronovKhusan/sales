@@ -17,7 +17,7 @@ class StudentController extends Controller
 
     public function send_student_request(Request $request)
     {
-        if (auth()->user()->can('send student request') || auth()->user()->can('add complaint to student')) {
+//        if (auth()->user()->can('send student request') || auth()->user()->can('add complaint to student')) {
 
             $this->validate($request, [
                 'type' => 'required',
@@ -68,7 +68,7 @@ class StudentController extends Controller
                 curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
                 $output = \curl_exec($curl);
                 \curl_close($curl);
-            }
+//            }
 
             return 'done';
         } else {

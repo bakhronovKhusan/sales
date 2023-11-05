@@ -86,8 +86,8 @@
                         <tr v-for="(row, index) in tableDataInGroup">
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
-                            <td>@{{ row.phone }} @{{ row.phone2 }}</td>
-                            <td>@{{ row.first_level }}</td>
+                            <td>@{{ row.phone }}</td>
+                            <td>@{{ row.teacher_info }}</td>
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
                             </td>

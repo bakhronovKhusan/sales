@@ -113,6 +113,7 @@
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Teacher</th>
+                            <th>Check chiqarish</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -122,6 +123,7 @@
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
+                            <td><a :href="row.check_url" target="_blank">Check chiqarish</a></td>
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>

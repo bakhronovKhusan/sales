@@ -329,7 +329,7 @@
                         type: this.typeModel,
                     };
 
-                    const response = await axios.post(`/api/v1/demo_keeper/status/waiting_new/9`, params, {
+                    const response = await axios.post(`/api/v1/send_student_request`, params, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': `Bearer ${this.token}`,

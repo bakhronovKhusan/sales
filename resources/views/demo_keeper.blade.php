@@ -64,7 +64,7 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Request</button>
+                                <a class="dropdown-item" href="#" v-b-modal.modal-page>Request</a>
                             </td>
                         </tr>
                         </tbody>
@@ -95,7 +95,7 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Request</button>
+                                <a class="dropdown-item" href="#" v-b-modal.modal-page>Request</a>
                             </td>
                         </tr>
                         </tbody>
@@ -123,7 +123,7 @@
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
-                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Request</button>
+                                <a class="dropdown-item" href="#" v-b-modal.modal-page>Request</a>
                             </td>
                         </tr>
                         </tbody>
@@ -133,6 +133,11 @@
         </div>
     </div>
 </div>
+
+<b-modal id="modal-page" title="Modal Title">
+    <p class="my-4">Modal content goes here.</p>
+</b-modal>
+
 </body>
 <script>
     let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FtYnJpZGdlb25saW5lLnV6L2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNjk5MTA0NDg0LCJleHAiOjE2OTkxMDUzODQsIm5iZiI6MTY5OTEwNDQ4NCwianRpIjoidGpCbjJJUkFFdVNxb2dUWiIsInN1YiI6IjMiLCJwcnYiOiI4N2UwYWYxZWY5ZmQxNTgxMmZkZWM5NzE1M2ExNGUwYjA0NzU0NmFhIn0.rYhXu1uoLM19Ljmpuj5ahOVChF_vxqNcgup60ukRga8"

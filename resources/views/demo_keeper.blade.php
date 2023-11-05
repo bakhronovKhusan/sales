@@ -326,7 +326,7 @@
                         branch_id: this.branchId,
                         comment: this.commentModel,
                         student_id: student_id,
-                        type: '"'+this.typeModel+'"',
+                        type: this.typeModel,
                     };
 
                     const response = await axios.post(`/api/v1/send_student_request`, params, {

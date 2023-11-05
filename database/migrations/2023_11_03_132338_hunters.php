@@ -16,6 +16,7 @@ return new class extends Migration
             $table->enum('is_cheque', [0, 1])->default(0);
             $table->enum('is_roadmap', [0, 1])->default(0);
             $table->enum('is_online', [0, 1])->default(0);
+            $table->enum('status', [0, 1])->default(0);
             $table->integer('group_student_id');
             $table->integer('offline_hunter_id')->nullable();
             $table->integer('online_hunter_id')->nullable();

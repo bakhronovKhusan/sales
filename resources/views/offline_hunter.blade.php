@@ -31,21 +31,21 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="demo_keeper-tab" data-toggle="tab" href="#demo_keeper" role="tab" aria-controls="demo_keeper" aria-selected="true">Demo keeper</a>
+                <a class="nav-link active" id="waiting_new-tab" data-toggle="tab" href="#waiting_new" role="tab" aria-controls="waiting_new" aria-selected="true">Waiting New</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="offline_hunter-tab" data-toggle="tab" href="#offline_hunter" role="tab" aria-controls="offline_hunter" aria-selected="false">Offline Hunter</a>
+                <a class="nav-link" id="in_group-tab" data-toggle="tab" href="#in_group" role="tab" aria-controls="in_group" aria-selected="false">In Group</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="online_hunter-tab" data-toggle="tab" href="#online_hunter" role="tab" aria-controls="online_hunter" aria-selected="false">Online Hunter</a>
+                <a class="nav-link" id="missed_trial-tab" data-toggle="tab" href="#missed_trial" role="tab" aria-controls="missed_trial" aria-selected="false">Missed Trial</a>
             </li>
         </ul>
 
         <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active" id="demo_keeper" role="tabpanel" aria-labelledby="demo_keeper-tab">
-                <div>
-                    <table class="table" style="height: 300px; overflow-x: auto;">
+        <div class="tab-content" id="demo_keeper">
+            <div class="tab-pane active" id="waiting_new" role="tabpanel" aria-labelledby="waiting_new-tab">
+                <div style="height: 500px; overflow-x: auto;">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>ID</th>
@@ -56,7 +56,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(row, index) in tableData">
+                        <tr v-for="(row, index) in tableDataWaitingNew">
                             <td>@{{ row.id }}</td>
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
@@ -70,53 +70,57 @@
                 </div>
 
             </div>
-            <div class="tab-pane" id="offline_hunter" role="tabpanel" aria-labelledby="offline_hunter-tab">
-                <table class="table" style="height: 300px; overflow-x: auto;">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Teacher</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="(row, index) in tableData">
-                        <td>@{{ row.id }}</td>
-                        <td>@{{ row.name }}</td>
-                        <td>@{{ row.phone }} @{{ row.phone2 }}</td>
-                        <td>@{{ row.staff }}</td>
-                        <td>
-                            <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="tab-pane" id="in_group" role="tabpanel" aria-labelledby="in_group-tab">
+                <div style="height: 500px; overflow-x: auto;">
+                    <table class="table" >
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Level</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(row, index) in tableDataInGroup">
+                            <td>@{{ row.id }}</td>
+                            <td>@{{ row.name }}</td>
+                            <td>@{{ row.phone }}</td>
+                            <td>@{{ row.teacher_info }}</td>
+                            <td>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="tab-pane" id="online_hunter" role="tabpanel" aria-labelledby="online_hunter-tab">
-                <table class="table">
-                    <thead style="height: 300px; overflow-x: auto;">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Teacher</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="(row, index) in tableData" >
-                        <td>@{{ row.id }}</td>
-                        <td>@{{ row.name }}</td>
-                        <td>@{{ row.phone }} @{{ row.phone2 }}</td>
-                        <td>@{{ row.staff }}</td>
-                        <td>
-                            <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="tab-pane" id="missed_trial" role="tabpanel" aria-labelledby="missed_trial-tab">
+                <div style="height: 500px; overflow-x: auto;">
+                    <table class="table">
+                        <thead >
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Teacher</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(row, index) in tableDataMissedTrial" >
+                            <td>@{{ row.id }}</td>
+                            <td>@{{ row.name }}</td>
+                            <td>@{{ row.phone }} @{{ row.phone2 }}</td>
+                            <td>@{{ row.staff }}</td>
+                            <td>
+                                <button @click="deleteItem(row.id)" class="btn btn-outline-dark" >Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -128,7 +132,9 @@
         el: '#demo_keeper',
         data: {
             token: token,
-            tableData: [],
+            tableDataWaitingNew: [],
+            tableDataInGroup: [],
+            tableDataMissedTrial: [],
             pageCount: 0
         },
         methods: {
@@ -140,8 +146,7 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    console.log(response)
-                    this.tableData = response.data
+                    this.tableDataWaitingNew = response.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -154,67 +159,12 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    console.log(response)
-                } catch (error) {
-                    console.error('Error uploading article:', error);
-                }
-            },
-            async getDemoDataInGroup() {
-                try {
-                    const response = await axios.get(`api/v1/status/in_group/9`, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            'Authorization': `Bearer ${this.token}`,
-                        },
+                    response.data.forEach((item) => {
+                        item.students_in_waiting_trial.forEach((el) => {
+                            this.tableDataMissedTrial.push(el)
+                        })
                     });
-                    console.log(response)
-                } catch (error) {
-                    console.error('Error uploading article:', error);
-                }
-            },
-        },
-        mounted(){
-            this.token = token;
-            if (!this.token) {
-                console.error('User is not authenticated');
-                return;
-            }
-            this.getDemoDataWaitingNew();
-            this.getDemoDataInGroup();
-        }
-    });
 
-    new Vue({
-        el: '#offline_hunter',
-        data: {
-            token: token,
-            tableData: [],
-            pageCount: 0
-        },
-        methods: {
-            async getDemoDataWaitingNew() {
-                try {
-                    const response = await axios.get(`/api/v1/demo_keeper/status/waiting_new/9`, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            'Authorization': `Bearer ${this.token}`,
-                        },
-                    });
-                    console.log(response)
-                    this.tableData = response.data
-                } catch (error) {
-                    console.error('Error uploading article:', error);
-                }
-            },
-            async getDemoDataMissedTrial() {
-                try {
-                    const response = await axios.get(`api/v1/status/missed_trial/9`, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            'Authorization': `Bearer ${this.token}`,
-                        },
-                    });
-                    console.log(response)
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -228,6 +178,7 @@
                         },
                     });
                     console.log(response)
+                    this.tableDataInGroup = response.data.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }
@@ -240,6 +191,7 @@
                 return;
             }
             this.getDemoDataWaitingNew();
+            this.getDemoDataMissedTrial();
             this.getDemoDataInGroup();
         }
     });

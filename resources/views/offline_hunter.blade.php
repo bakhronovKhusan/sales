@@ -139,6 +139,83 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" id="requestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Send Request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="discount_sum">Branch</label>
+                    <select v-model="branchId" id="branch_id" placeholder="type" class="form-control form-control-sm">
+                        <option></option>
+                        <option value="7">
+                            Darkhan
+                        </option>
+                        <option value="9">
+                            Drujba
+                        </option>
+                        <option value="11">
+                            Tinchlik
+                        </option>
+                        <option value="12">
+                            Oybek
+                        </option>
+                        <option value="29">
+                            Sergeli
+                        </option>
+                        <option value="30">
+                            Yunusobod
+                        </option>
+                        <option value="33">
+                            Novza 1
+                        </option>
+                        <option value="34">
+                            Novza 2
+                        </option>
+                        <option value="35">
+                            Drujba 2
+                        </option>
+                        <option value="36">
+                            Inyaz
+                        </option>
+                        <option value="37">
+                            Head office
+                        </option>
+                        <option value="38">
+                            Corporate
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="discount_sum">Turi</label>
+                    <select id="discount_sum" placeholder="type" class="form-control form-control-sm" v-model="typeModel">
+                        <option value="ar">Archive</option>
+                        <option value="fr">Freeze</option>
+                        <option value="b">Balance</option>
+                        <option value="a">Analyze</option>
+                        <option value="g">Grant</option>
+                        <option value="o">Other</option>
+                        <option value="w">Waiting</option>
+                        <option value="l">Letter</option>
+                        <option value="c">Cashback</option>
+                        <option value="p">Personal account access</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="discount_sum" >Comment</label>
+                    <textarea type="text" v-model="commentModel" class="form-control form-control-sm"></textarea></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" @click="sendRequestTO">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script>
     let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2FtYnJpZGdlb25saW5lLnV6L2FwaS92MS9hdXRoL2xvZ2luIiwiaWF0IjoxNjk5MjIzNDg4LCJleHAiOjE2OTkyMjQzODgsIm5iZiI6MTY5OTIyMzQ4OCwianRpIjoieHFZaUJkd3RyUlhVVVh0MiIsInN1YiI6IjMiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0._FY5DO6kjpPEVE4aFgUbk3pYi9DFkKSxrFXCEevgG4c"

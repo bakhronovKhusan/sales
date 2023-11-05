@@ -190,7 +190,7 @@
                         },
                     });
                     console.log(response)
-                    this.tableDataInGroup = response.data.data
+                    this.paidHistory = response.data.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

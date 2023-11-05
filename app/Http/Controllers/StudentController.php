@@ -25,6 +25,7 @@ class StudentController extends Controller
                 'branch_id' => 'required',
             ]);
 
+            dd(auth()->user());
             StudentRequest::create([
                 "student_id" => $request->student_id,
                 "branch_id" => $request->branch_id,

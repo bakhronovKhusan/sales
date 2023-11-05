@@ -35,7 +35,8 @@ class RedisCheckByKeyMiddleware
         if ($client->exists($token)) {
 
             $userId = $client->get($token);
-            dd($userId);
+            var_dump($userId);
+            dd("Stop");
 
             // Manually authenticate the user
             $user = User::find($userId);

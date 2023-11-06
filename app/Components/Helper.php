@@ -720,4 +720,39 @@ class Helper
         return $one_lesson_price;
     }
 
+    public function send_sms($phone_no, $text)
+    {
+        $input = '
+	            {
+	             "messages":
+	                [
+	                 {
+	                  "recipient":"' . $phone_no . '",
+	                  "message-id":"' . mt_rand(0, 99999) . '",
+	                     "sms":{
+
+	                       "originator": "3700",
+	                         "content": {
+	                            "text": ' . json_encode($text) . '
+	                          }
+	                      }
+	                    }
+	                ]
+	            }
+	        ';
+        $url = config('sms.url');
+        $username = config('sms.username');
+        $password = config('sms.password');
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Authorization: Basic ' . base64_encode("$username:$password"),
+        ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "$input");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $data = curl_exec($ch);
+        curl_close($ch);
+    }
 }

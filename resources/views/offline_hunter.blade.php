@@ -237,8 +237,7 @@
                             'Authorization': `Bearer ${this.token}`,
                         },
                     });
-                    this.tableDataWaitingNew = response.data
-                    console.log('tableDataWaitingNew',this.tableDataWaitingNew)
+                    this.tableDataWaitingNew = response.data.data
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

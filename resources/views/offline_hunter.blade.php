@@ -238,6 +238,7 @@
                         },
                     });
                     this.tableDataWaitingNew = response.data
+                    console.log('tableDataWaitingNew',this.tableDataWaitingNew)
                 } catch (error) {
                     console.error('Error uploading article:', error);
                 }

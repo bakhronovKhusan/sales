@@ -27,4 +27,4 @@ Route::get('/online_hunter',function (){
     return view('online_hunter');
 });
 
-Route::get('/roadmap/{level_id}/{student_id}',[StudentController::class, 'roadmap']);
+Route::get('/roadmap/{level}/{student}',[StudentController::class, 'roadmap']);

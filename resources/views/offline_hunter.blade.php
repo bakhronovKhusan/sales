@@ -27,7 +27,7 @@
 <body>
 <div style="width: 100%;padding: 10px">
     <h4 style="text-align: center;">Example Sales
-        <div style="width: 500px">
+        <div style="width: 500px;margin: 0px auto;">
             <input id="phone" value="" required class="form-control"/>
             <button onclick="sendRoadMap()" class="btn btn-outline-default">RoadMap</button>
         </div>

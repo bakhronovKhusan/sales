@@ -62,19 +62,19 @@
                     margin: 20px;
                     display: inline-block;">
             <div  style="display: flex;gap: 10px;">
-                <a href=""><img src="http://pdf/img/logo.png" alt="logo"></a>
+                <a href=""><img src="https://sales-api.cambridgeonline.uz/img/logo.png" alt="logo"></a>
                 <p style="color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;">Study Plan <br> for Student</p>
             </div>
             <h2 style="padding-top: 15px;color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.06px;text-transform: capitalize;">Abdul-aziz <br> Akhmedov</h2>
             <h1 style="color: #fff;font-size: 32px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.16px;">B+</h1>
             <h3 style="color: #fff;font-size: 12px;font-style: normal;font-weight: 300;line-height: 130%;letter-spacing: -0.16px;margin-bottom: 20px;">Correct Answers: 14</h3>
-            <img src="http://pdf/img/Graph.png" alt="graph" style="width: 100%;max-width: 130px">
+            <img src="https://sales-api.cambridgeonline.uz/img/Graph.png" alt="graph" style="width: 100%;max-width: 130px">
         </div>
         <div style="padding: 20px;border-left: 1px solid #EEF0F8;width: 315px;position: absolute;top: 0;right: 0">
-            <img src="http://pdf/img/Chart.png" alt="chart" style="width: 100%;">
+            <img src="https://sales-api.cambridgeonline.uz/img/Chart.png" alt="chart" style="width: 100%;">
         </div>
     </header>
     <section style="border-top: 1px solid #EEF0F8;padding: 30px;">
-        <img src="http://pdf/img/Group2.png" alt="roadmap" style="width: 100%;">
+        <img src="https://sales-api.cambridgeonline.uz/img/Group2.png" alt="roadmap" style="width: 100%;">
     </section>
 </div>

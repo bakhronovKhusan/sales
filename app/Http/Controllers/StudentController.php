@@ -79,6 +79,6 @@ class StudentController extends Controller
     }
 
     public function roadmap(Level $level, Student $student){
-
+        return view('roadmap');
     }
 }

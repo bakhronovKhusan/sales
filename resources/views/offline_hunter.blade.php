@@ -29,7 +29,7 @@
     <h4 style="text-align: center;">Example Sales
         <div style="width: 500px;margin: 20px auto;display: flex;">
             <input id="phone" value="" required class="form-control"/>
-            <button onclick="sendRoadMap()" style="margin: 0px 10px" class="btn btn-outline-default">RoadMap</button>
+            <button onclick="sendRoadMap()" style="margin: 0px 10px" class="btn btn-outline-info">RoadMap</button>
         </div>
     </h4>
     <div class="container">

@@ -88,7 +88,7 @@ class StudentController extends Controller
     }
 
     public function sendRoadMap(Request $request){
-        (new Helper())->send_sms($request->phone,'Testing processing!');
+        (new Helper())->send_sms($request->phone,'RoadMap url: https://sales-api.cambridgeonline.uz/roadmap/1/80075');
     }
 
 }

@@ -26,8 +26,12 @@
 </head>
 <body>
 <div style="width: 100%;padding: 10px">
-    <h4 style="text-align: center;">Example Sales</h4>
-    <a onclick="sendRoadMap()"><input id="phone" value="" required class="form-control"/> RoadMap</a>
+    <h4 style="text-align: center;">Example Sales
+        <div style="width: 500px">
+            <input id="phone" value="" required class="form-control"/>
+            <button onclick="sendRoadMap()" class="btn btn-outline-default">RoadMap</button>
+        </div>
+    </h4>
     <div class="container">
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">

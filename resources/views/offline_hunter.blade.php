@@ -316,7 +316,7 @@
          axios.get(`api/v1/sendRoadMap/`+phone, {
             headers: {
                 'Content-Type': 'multipart/form-data',
-                'Authorization': `Bearer ${this.token}`,
+                'Authorization': `Bearer `+token,
             },
         });
     }

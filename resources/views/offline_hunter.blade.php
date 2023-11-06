@@ -62,7 +62,7 @@
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.group_time }}</td>
-                            <td><a :href="row.check_url" class="btn btn-outline-dark"> Check chiqarish </a></td>
+                            <td><a :href="row.check_url" target="_blank" class="btn btn-outline-dark"> Check chiqarish </a></td>
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>

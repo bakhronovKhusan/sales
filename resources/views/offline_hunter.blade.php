@@ -62,7 +62,7 @@
                             <td>@{{ row.name }}</td>
                             <td>@{{ row.phone }} @{{ row.phone2 }}</td>
                             <td>@{{ row.staff }}</td>
-                            <td><button @click="getCheque" class="btn btn-outline-dark"> Check chiqarish </button></td>
+                            <td><a :href="row.check_url" class="btn btn-outline-dark"> Check chiqarish </a></td>
                             <td>
                                 <button @click="deleteItem(row.id)" class="btn btn-outline-info" >Mos Guruh tanlash</button>
                                 <br>
@@ -231,7 +231,7 @@
         methods: {
             async offlineHunterDataWaitingNew() {
                 try {
-                    const response = await axios.get(`/api/v1/demo_keeper/status/waiting_new/9`, {
+                    const response = await axios.get(`api/v1/status/in_group/9`, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             'Authorization': `Bearer ${this.token}`,

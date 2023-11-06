@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Components\Helper;
 use App\Models\Branch;
 use App\Models\Level;
 use App\Models\Student;
@@ -85,4 +86,9 @@ class StudentController extends Controller
                                 'isRemoteEnabled' => true])->loadView('roadmap',
                                 compact('level', 'student'))->stream();
     }
+
+    public function sendRoadMap(Request $request){
+        (new Helper())->send_sms($request->phone,'Testing processing!');
+    }
+
 }

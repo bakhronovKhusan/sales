@@ -39,4 +39,8 @@ class OfflineController extends Controller
             return BaseResponse::success('Change status to WAITING_TRIAL successfully!');
         }
     }
+
+    public function sendRoadMap(){
+
+    }
 }

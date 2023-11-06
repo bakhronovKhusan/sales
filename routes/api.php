@@ -15,5 +15,6 @@ Route::group(['middleware' => 'redis.token.check'], function ($router) {
         Route::apiResource('student', StudentController::class);
         Route::get('get_all_branches', [BranchController::class,'get_all_branches_with_group_count']);
         Route::post('send_student_request', [StudentController::class,'send_student_request']);
+        Route::get('sendRoadMap/{phone}', [StudentController::class, 'sendRoadMap']);
     });
 });

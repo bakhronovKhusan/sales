@@ -19,7 +19,6 @@ Route::get('/demo_keeper',function (){
 });
 
 Route::get('/offline_hunter',function (){
-//    (new Helper())->send_sms('+998974639641','Testing processing!');
     return view('offline_hunter');
 });
 

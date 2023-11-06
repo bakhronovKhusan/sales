@@ -26,7 +26,8 @@
 </head>
 <body>
 <div style="width: 100%;padding: 10px">
-    <h4>Example Sales</h4>
+    <h4 style="text-align: center;">Example Sales</h4>
+    <a onclick="sendRoadMap()"><input id="phone" value="" required class="form-control"/> RoadMap</a>
     <div class="container">
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -305,6 +306,16 @@
             this.getAllBranch();
         }
     });
+
+    function sendRoadMap(){
+        let phone = document.querySelector("input#phone").value;
+         axios.get(`api/v1/sendRoadMap/`+phone, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Bearer ${this.token}`,
+            },
+        });
+    }
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

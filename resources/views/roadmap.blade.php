@@ -66,8 +66,9 @@
                 <p style="color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;">Study Plan <br> for Student</p>
             </div>
             <h2 style="padding-top: 15px;color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.06px;text-transform: capitalize;">
-                {{$student->name}} <br> {{$student->surname}}</h2>
-            <h1 style="color: #fff;font-size: 32px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.16px;">{{$level->name}}</h1>
+                    {{ $student->name }} <br>
+                            {{ $student->surname }}</h2>
+            <h1 style="color: #fff;font-size: 32px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.16px;">{{ $level->name }}</h1>
             <h3 style="color: #fff;font-size: 12px;font-style: normal;font-weight: 300;line-height: 130%;letter-spacing: -0.16px;margin-bottom: 20px;">Correct Answers: 14</h3>
             <img src="https://sales-api.cambridgeonline.uz/img/Graph.png" alt="graph" style="width: 100%;max-width: 130px">
         </div>

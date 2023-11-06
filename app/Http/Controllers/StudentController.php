@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Level;
 use App\Models\Student;
 use App\Models\StudentRequest;
 use App\User;
@@ -75,5 +76,9 @@ class StudentController extends Controller
         } else {
             return 'no';
         }
+    }
+
+    public function roadmap(Level $level, Student $student){
+
     }
 }

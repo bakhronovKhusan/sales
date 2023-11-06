@@ -1,6 +1,7 @@
 <?php
 
 use App\Components\Helper;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,5 @@ Route::get('/offline_hunter',function (){
 Route::get('/online_hunter',function (){
     return view('online_hunter');
 });
+
+Route::get('/roadmap/{level_id}/{student_id}',[StudentController::class, 'roadmap']);

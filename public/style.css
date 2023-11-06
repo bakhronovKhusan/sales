@@ -1,0 +1,101 @@
+@import "./fonts.css";
+
+html {
+  -webkit-print-color-adjust: exact;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  font-family: CircularStd, sans-serif;
+}
+
+body {
+  background: #f8f9ff;
+}
+
+main{
+  width: 720px;
+  background-color: #f8f9ff;
+  margin: 30px auto;
+}
+
+.container {
+  max-width: 563px;
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.container header{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.student {
+  border-radius: 22px;
+  border: 0.5px solid #eef0f8;
+  background: #fff;
+}
+
+.student-content {
+  border-radius: 15px;
+  background: linear-gradient(265deg, #22b1ec 0%, #0d99ff 100%);
+  box-shadow: 0px 0px 10px 0px #dee5f3;
+  padding: 20px;
+  margin: 20px;
+}
+
+.student-content_info {
+  display: flex;
+  gap: 10px;
+}
+
+.student-content_info p {
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+}
+
+.student-content > h2 {
+  padding-top: 15px;
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -0.06px;
+  text-transform: capitalize;
+}
+
+.student-content > h1 {
+  color: #fff;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+  letter-spacing: -0.16px;
+}
+
+.student-content > h3 {
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 130%;
+  letter-spacing: -0.16px;
+  margin-bottom: 20px;
+}
+.char-content{
+  padding: 20px;
+  border-left: 1px solid #EEF0F8;
+}
+section{
+  border-top: 1px solid #EEF0F8;
+  padding: 30px;
+}

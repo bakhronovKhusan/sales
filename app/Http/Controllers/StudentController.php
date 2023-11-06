@@ -7,6 +7,7 @@ use App\Models\Level;
 use App\Models\Student;
 use App\Models\StudentRequest;
 use App\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -79,6 +80,6 @@ class StudentController extends Controller
     }
 
     public function roadmap(Level $level, Student $student){
-        return view('roadmap');
+        return PDF::setOptions(['debug' => true, 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('welcome')->stream();
     }
 }

@@ -80,6 +80,6 @@ class StudentController extends Controller
     }
 
     public function roadmap(Level $level, Student $student){
-        return PDF::setOptions(['debug' => true, 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('welcome')->stream();
+        return PDF::setOptions(['debug' => true, 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('roadmap')->stream();
     }
 }

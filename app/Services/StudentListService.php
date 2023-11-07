@@ -20,7 +20,7 @@ class StudentListService
                                             "id", t_groups.id,
                                             "day", t_groups.days,
                                             "time", t_groups.time
-                                          ) AS groups_data,
+                                          ) AS groups_json,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
                                         t_group_student.student_id,
@@ -63,8 +63,7 @@ class StudentListService
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
         foreach ($results as $key => $result) {
-            $results[$key]->groups_json
-                = json_decode($result->groups_json);
+            $results[$key]->groups = json_decode($result->groups_json); unset($result->groups_json);
         }
         return $results;
     }

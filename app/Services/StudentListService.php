@@ -20,7 +20,7 @@ class StudentListService
                                             "id", t_groups.id,
                                             "day", t_groups.days,
                                             "time", t_groups.time
-                                          ) AS groups,
+                                          ) AS groups_data,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
                                         t_group_student.student_id,

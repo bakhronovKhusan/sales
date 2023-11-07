@@ -63,7 +63,8 @@ class StudentListService
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
         foreach ($results as $key => $result) {
-            $results[$key]->groups_json = json_decode($result[$result->groups_json]);
+            $results[$key]->groups_json
+                = json_decode($result[$result->groups_json]);
         }
         return $results;
     }

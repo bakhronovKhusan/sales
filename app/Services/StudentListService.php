@@ -16,6 +16,7 @@ class StudentListService
                                         t_students.created_at as students_created_at,
                                         t_groups.days,
                                         t_groups.time as group_time,
+                                        t_groups.* as groups,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
                                         t_group_student.student_id,
@@ -57,10 +58,7 @@ class StudentListService
                                         and t_staff.id is not null
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
-        $return = [];
-        foreach ($results as $result){
-            $return[$result->lavel_name][$result->group_time][] = $result;
-        }
-        return $return;
+
+        return $results;
     }
 }

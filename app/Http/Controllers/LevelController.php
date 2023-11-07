@@ -46,7 +46,6 @@ class LevelController extends Controller
     public function get_levels(Request $request){
 
         $subdomain = 'app';
-
         return Level::with('course')
             ->whereHas('course', function($q) use ($subdomain){
                 $q->whereHas('companies',function($q) use ($subdomain){

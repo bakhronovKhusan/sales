@@ -12,22 +12,21 @@ class StudentListService
     {
         $date = $request->date ?? date('Y-m-d');
         $branch_id = $request->branch_id ? 'and t_groups.branch_id = '.$request->branch_id :'';
-        $results =  DB::select('SELECT
-                                        t_students.created_at as students_created_at,
-                                        t_groups.days,
-                                        t_groups.time as group_time,
-                                        JSON_OBJECT(
-                                            "id", t_groups.id,
-                                            "day", t_groups.days,
-                                            "time", t_groups.time
-                                          ) AS groups_json,
+        $results =  DB::select('SELECT JSON_OBJECT(
+                                                    "id", t_groups.id,
+                                                    "day", t_groups.days,
+                                                    "time", t_groups.time
+                                              ) AS groups_json,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
                                         t_group_student.student_id,
                                         t_group_student.group_id,
                                         t_levels.name as lavel_name,
-                                        CONCAT(IFNULL(t_students.name, ""), " ", IFNULL(t_students.surname, "")) as name,
-                                        IFNULL(CONCAT(t_students.phone, ", ", t_students.phone2), t_students.phone) as phone,
+                                        JSON_OBJECT(
+                                                    "students_created_at", t_students.created_at,
+                                                    "name", CONCAT(IFNULL(t_students.name, ""), " ", IFNULL(t_students.surname, "")),
+                                                    "phone", IFNULL(CONCAT(t_students.phone, ", ", t_students.phone2), t_students.phone)
+                                              ) AS student_json,
                                         IFNULL(t_staff.certificate, "Not Exits!") as teacher_info,
                                         CASE
                                             WHEN t_group_student.status="iG" THEN "IN GROUP"
@@ -64,6 +63,7 @@ class StudentListService
                                     ORDER BY t_groups.created_at DESC');
         foreach ($results as $key => $result) {
             $results[$key]->groups = json_decode($result->groups_json); unset($result->groups_json);
+            $results[$key]->student = json_decode($result->student_json); unset($result->student_json);
         }
         return $results;
     }

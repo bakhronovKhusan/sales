@@ -19,7 +19,7 @@ Route::group(['middleware' => 'redis.token.check'], function ($router) {
         Route::get('sendRoadMap/{phone}', [StudentController::class, 'sendRoadMap']);
 
         Route::group(['prefix'=>'check_group'], function ($route){
-            Route::get('',[]);
+
         });
     });
 });

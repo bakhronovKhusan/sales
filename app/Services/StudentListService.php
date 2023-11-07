@@ -60,7 +60,6 @@ class StudentListService
         foreach ($results as $result){
             $return[$result->group_time][] = $result;
         }
-        dd($return);
-        return ResourceStudentList::collection($return);
+        return $return;
     }
 }

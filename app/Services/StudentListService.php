@@ -58,7 +58,7 @@ class StudentListService
                                     ORDER BY t_groups.created_at DESC');
         $return = [];
         foreach ($results as $result){
-            $return[$result->group_time][] = $result;
+            $return[$result['group_time']][] = $result;
         }
         return ResourceStudentList::collection($return);
     }

@@ -62,9 +62,8 @@ class StudentListService
                                         and t_staff.id is not null
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
-        dd($results);
         foreach ($results as $key => $result) {
-            $results[$key][$result->groups_json] = $result[$result->groups_json];
+            $results[$key]->groups_json = json_decode($result[$result->groups_json]);
         }
         return $results;
     }

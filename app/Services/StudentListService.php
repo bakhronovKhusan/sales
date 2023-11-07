@@ -17,9 +17,9 @@ class StudentListService
                                         t_groups.days,
                                         t_groups.time as group_time,
                                          JSON_OBJECT(
-                                            "id", t_groups.id,
-                                            "days", t_groups.days,
-                                            "time", t_groups.time
+                                            `id`, t_groups.id,
+                                            `days`, t_groups.days,
+                                            `time`, t_groups.time
                                           ) AS groups,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,

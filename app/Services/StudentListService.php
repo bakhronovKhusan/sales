@@ -12,7 +12,7 @@ class StudentListService
     {
         $date = $request->date ?? date('Y-m-d');
         $branch_id = $request->branch_id ? 'and t_groups.branch_id = '.$request->branch_id :'';
-        $result =  DB::select('SELECT
+        $results =  DB::select('SELECT
                                         t_students.created_at as students_created_at,
                                         t_groups.days,
                                         t_groups.time as group_time,
@@ -56,6 +56,10 @@ class StudentListService
                                         and t_staff.id is not null
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
-        return ResourceStudentList::collection($result);
+        $return = [];
+        foreach ($results as $result){
+            $return[$result->group_time][] = $result;
+        }
+        return ResourceStudentList::collection($return);
     }
 }

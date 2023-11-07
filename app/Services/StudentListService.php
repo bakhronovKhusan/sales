@@ -20,6 +20,7 @@ class StudentListService
                                         t_group_student.status,
                                         t_group_student.student_id,
                                         t_group_student.group_id,
+                                        t_levels.name as lavel_name
                                         CONCAT(IFNULL(t_students.name, ""), " ", IFNULL(t_students.surname, "")) as name,
                                         IFNULL(CONCAT(t_students.phone, ", ", t_students.phone2), t_students.phone) as phone,
                                         IFNULL(t_staff.certificate, "Not Exits!") as teacher_info,
@@ -58,7 +59,7 @@ class StudentListService
                                     ORDER BY t_groups.created_at DESC');
         $return = [];
         foreach ($results as $result){
-            $return[$result->group_time][] = $result;
+            $return[$result->lavel_name][$result->group_time][] = $result;
         }
         return $return;
     }

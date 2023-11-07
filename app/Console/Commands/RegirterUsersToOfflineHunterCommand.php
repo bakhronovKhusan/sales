@@ -3,7 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-class RegirterUsersToOfflineHunterCommand extends Con
+
+class RegirterUsersToOfflineHunterCommand extends Command
 {
 
 }

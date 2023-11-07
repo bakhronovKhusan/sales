@@ -22,22 +22,22 @@ class Level extends Model
 
     public function course()
     {
-        return $this->belongsTo('App\Models\Models\Course');
+        return $this->belongsTo('App\Models\Course');
     }
 
     public function groups()
     {
-        return $this->hasMany('App\Models\Models\Group');
+        return $this->hasMany('App\Models\Group');
     }
 
     public function prices()
     {
-        return $this->hasMany('App\Models\Models\PriceList');
+        return $this->hasMany('App\Models\PriceList');
     }
 
     public function students()
     {
-        return $this->belongsToMany('App\Models\Models\Student', 'level_student')->withPivot(
+        return $this->belongsToMany('App\Models\Student', 'level_student')->withPivot(
             'student_time',
             'days'
         );
@@ -118,6 +118,6 @@ class Level extends Model
 
     public function exam_materials()
     {
-        return $this->hasMany('App\Models\Models\ExamMaterial');
+        return $this->hasMany('App\Models\ExamMaterial');
     }
 }

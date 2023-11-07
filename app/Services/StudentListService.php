@@ -16,7 +16,7 @@ class StudentListService
                                         t_students.created_at as students_created_at,
                                         t_groups.days,
                                         t_groups.time as group_time,
-                                        t_groups.* as groups,
+                                        t_groups.*,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
                                         t_group_student.student_id,

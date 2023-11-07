@@ -19,10 +19,9 @@ class StudentListService
                                               ) AS groups_json,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
-                                        t_group_student.student_id,
-                                        t_group_student.group_id,
                                         t_levels.name as lavel_name,
                                         JSON_OBJECT(
+                                                    "id", t_students.id,
                                                     "students_created_at", t_students.created_at,
                                                     "name", CONCAT(IFNULL(t_students.name, ""), " ", IFNULL(t_students.surname, "")),
                                                     "phone", IFNULL(CONCAT(t_students.phone, ", ", t_students.phone2), t_students.phone)

@@ -16,11 +16,7 @@ class StudentListService
                                         t_students.created_at as students_created_at,
                                         t_groups.days,
                                         t_groups.time as group_time,
-                                         JSON_OBJECT(
-                                            `id`, t_groups.id,
-                                            `days`, t_groups.days,
-                                            `time`, t_groups.time
-                                          ) AS groups,
+                                        (SELECT t_groups.* FOR JSON PATH) AS groups
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
                                         t_group_student.student_id,

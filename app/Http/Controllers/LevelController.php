@@ -51,6 +51,6 @@ class LevelController extends Controller
                     $q->where('subdomain',$subdomain);
                 });
             })
-            ->toSql();
+            ->get();
     }
 }

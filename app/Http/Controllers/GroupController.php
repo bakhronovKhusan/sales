@@ -43,33 +43,33 @@ class GroupController extends Controller
     public function getGroupsWhichHasNewStudents(Request $request){
         $branches = implode(",",$request->branches);
         if ($branches) {
-            $numbers_query = "SELECT
-                        COUNT(gs.student_id) AS `number`,
-                        (
-                            SELECT
-                                COUNT(tgs.student_id)
-                            FROM t_group_student tgs
-                            LEFT JOIN  t_groups tg ON  tg.id = tgs.group_id
-                            WHERE tg.branch_id = g.branch_id
-                            AND tg.`status` = 'a'
-                            AND tgs.`status` = 'iG'
-                            AND tgs.`missed_trials` = 0
-                            AND (
-                                tgs.`called` = 0
-                                OR tgs.`called` IS NULL
-                            )
-                        ) AS not_called,
-                        g.branch_id
-                    FROM t_group_student gs
-                    LEFT JOIN t_groups g ON g.id=gs.group_id
-                    WHERE
-                        g.branch_id IN (" . $branches . ")
-                        AND g.`status` = 'a'
-                        AND gs.`status` = 'iG'
-                        AND gs.`missed_trials` = 0
-                    GROUP BY g.branch_id";
-
-            $numbers = DB::select($numbers_query);
+//            $numbers_query = "SELECT
+//                        COUNT(gs.student_id) AS `number`,
+//                        (
+//                            SELECT
+//                                COUNT(tgs.student_id)
+//                            FROM t_group_student tgs
+//                            LEFT JOIN  t_groups tg ON  tg.id = tgs.group_id
+//                            WHERE tg.branch_id = g.branch_id
+//                            AND tg.`status` = 'a'
+//                            AND tgs.`status` = 'iG'
+//                            AND tgs.`missed_trials` = 0
+//                            AND (
+//                                tgs.`called` = 0
+//                                OR tgs.`called` IS NULL
+//                            )
+//                        ) AS not_called,
+//                        g.branch_id
+//                    FROM t_group_student gs
+//                    LEFT JOIN t_groups g ON g.id=gs.group_id
+//                    WHERE
+//                        g.branch_id IN (" . $branches . ")
+//                        AND g.`status` = 'a'
+//                        AND gs.`status` = 'iG'
+//                        AND gs.`missed_trials` = 0
+//                    GROUP BY g.branch_id";
+//
+//            $numbers = DB::select($numbers_query);
 
 
             $groups = Group::whereHas('students', function ($q) {
@@ -90,7 +90,7 @@ class GroupController extends Controller
                 ->get();
             return [
                 'groups' => $groups,
-                'numbers' => $numbers
+//                'numbers' => $numbers
             ];
         }
     }

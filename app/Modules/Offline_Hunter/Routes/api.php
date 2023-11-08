@@ -20,6 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'redis.token.check'], function ($router) {
     Route::group(['prefix' => 'v1/offline_hunter'], function ($router) {
-        Route::post('new_student_list/{branches?}',[GroupController::class, 'getGroupsWhichHasNewStudents']);
+        Route::post('new_student_list',[GroupController::class, 'getGroupsWhichHasNewStudents']);
     });
 });

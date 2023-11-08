@@ -76,7 +76,7 @@ class GroupController extends Controller
                 $q->where('group_student.missed_trials', 0);
             })
                 ->where('status', 'a')
-                ->where('t_groups.days', 'tts')
+                ->where('days', 'tts')
                 ->whereNotIn('branch_id', config("branch.not_used_branches"))
                 ->where('branch_id', $request->branch_id)
                 ->with(['all_students_without_archive' => function ($q) {

@@ -6,6 +6,7 @@ use App\Http\Resources\ResourceStudentList;
 use App\Models\GroupStudent;
 use App\Models\Level;
 use App\Models\Student;
+use FontLib\TrueType\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -69,8 +70,7 @@ class StudentListService
             $results[$key]->groups  = json_decode($result->groups_json); unset($result->groups_json);
             $results[$key]->student = json_decode($result->student_json); unset($result->student_json);
             $results[$key]->url     = json_decode($result->url_json); unset($result->url_json);
-            $groups[$result->lavel_name][$result->groups_id][] = $results[$key]->student;
         }
-        return $groups;
+        return collect($results);
     }
 }

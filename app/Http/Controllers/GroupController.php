@@ -72,10 +72,10 @@ class GroupController extends Controller
             $numbers = DB::select($numbers_query);
 
 
-//            $groups = Group::whereHas('students', function ($q) {
-//                $q->where('group_student.status', 'iG');
-//                $q->where('group_student.missed_trials', 0);
-//            })
+            $groups = Group::whereHas('students', function ($q) {
+                $q->where('group_student.status', 'iG');
+                $q->where('group_student.missed_trials', 0);
+            });
 //                ->where('status', 'a')
 //                ->whereNotIn('branch_id', config("branch.not_used_branches"))
 ////                ->whereIn('branch_id', $request->branches)
@@ -89,7 +89,7 @@ class GroupController extends Controller
 //                ->orderBy('id', 'ASC')
 //                ->get();
             return [
-//                'groups' => $groups,
+                'groups' => $groups,
                 'numbers' => $numbers
             ];
         }

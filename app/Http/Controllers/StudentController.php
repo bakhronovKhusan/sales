@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Components\Helper;
+use App\Models\CourseStudent;
+use App\Models\Group;
+use App\Models\GroupStudent;
 use App\Models\Branch;
 use App\Models\Level;
 use App\Models\Student;
 use App\Models\StudentRequest;
+use App\Models\Track;
 use App\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -91,4 +95,43 @@ class StudentController extends Controller
         (new Helper())->send_sms($request->phone,'RoadMap url: https://sales-api.cambridgeonline.uz/roadmap/1/80075');
     }
 
+    public function add_to_selection_from_lead($student_id, $course_id, $selection)
+    {
+
+        if (!auth()->user()->can('add to selection')) {
+            return response()->json(['error' => 'This page is forbidden for you'], 403);
+        }
+
+        $gs = GroupStudent::where([
+            'group_id' => $selection,
+            'student_id' => $student_id,
+        ])->count();
+
+        if ($gs) {
+            return response()->json(['error' => "There student is already added to this group"], 422);
+        }
+
+        $group = Group::with(['level', 'teachers', 'branch'])->whereId($selection)->first();
+        $group->students()->attach($student_id, [
+            'created_at' => now(),
+            'administrator_id' => auth()->user()->type_id,
+            'created_by' => auth()->user()->id,
+            'status' => 'iG'
+        ]);
+
+        CourseStudent::where(['course_id' => $course_id, 'student_id' => $student_id])->delete();
+
+        $teacher = '';
+        if (count($group->teachers)) {
+            $teacher = $group->teachers[0]->name;
+        }
+
+        Track::create([
+            'student_id' => $student_id,
+            'status' => 's',
+            'description' => 'Added to the selection #' . $group->id . ' ' . $group->level->name . ' ' . $teacher . ' ' . $group->branch->name
+        ]);
+
+        return 'done';
+    }
 }

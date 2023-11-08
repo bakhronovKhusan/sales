@@ -75,7 +75,7 @@ class GroupController extends Controller
             $groups = Group::whereHas('students', function ($q) {
                 $q->where('group_student.status', 'iG');
                 $q->where('group_student.missed_trials', 0);
-            });
+            })
 //                ->where('status', 'a')
 //                ->whereNotIn('branch_id', config("branch.not_used_branches"))
 ////                ->whereIn('branch_id', $request->branches)
@@ -87,7 +87,7 @@ class GroupController extends Controller
 //                ->with(['teachers','branch','level'])
 //                ->orderBy('branch_id', 'ASC')
 //                ->orderBy('id', 'ASC')
-//                ->get();
+                ->get();
             return [
                 'groups' => $groups,
                 'numbers' => $numbers

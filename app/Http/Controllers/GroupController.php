@@ -69,7 +69,7 @@ class GroupController extends Controller
                     GROUP BY g.branch_id";
 
             $numbers = DB::select($numbers_query);
-
+            dd($numbers);
 
             $groups = Group::whereHas('students', function ($q) {
                 $q->where('group_student.status', 'iG');

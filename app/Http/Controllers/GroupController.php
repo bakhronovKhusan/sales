@@ -76,7 +76,7 @@ class GroupController extends Controller
             })
                 ->where('status', 'a')
                 ->whereNotIn('branch_id', config("branch.not_used_branches"))
-                ->whereIn('branch_id', $request->branch_id)
+                ->whereIn('branch_id', [$request->branch_id])
                 ->with(['all_students_without_archive' => function ($q) {
                     $q->with("comments");
                     $q->where('group_student.status', 'iG');
@@ -86,7 +86,6 @@ class GroupController extends Controller
                 ->orderBy('branch_id', 'ASC')
                 ->orderBy('id', 'ASC')
                 ->get();
-            dd($groups);
             return [
                 'groups' => $groups,
                 'numbers' => $numbers

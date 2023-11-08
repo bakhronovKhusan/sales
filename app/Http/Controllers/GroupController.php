@@ -41,7 +41,6 @@ class GroupController extends Controller
     }
 
     public function getGroupsWhichHasNewStudents(Request $request){
-        if($request->branches){
         $branches = implode(",",$request->branches);
         if ($branches) {
             $numbers_query = "SELECT
@@ -71,7 +70,6 @@ class GroupController extends Controller
                     GROUP BY g.branch_id";
 
             $numbers = DB::select($numbers_query);
-        }
 
             $groups = Group::whereHas('students', function ($q) {
                 $q->where('group_student.status', 'iG');

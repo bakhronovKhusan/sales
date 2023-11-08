@@ -8,6 +8,7 @@ use App\Models\Group;
 use App\Models\GroupStudent;
 use App\Models\Branch;
 use App\Models\Level;
+use App\Models\LevelStudent;
 use App\Models\Student;
 use App\Models\StudentRequest;
 use App\Models\Track;
@@ -120,6 +121,49 @@ class StudentController extends Controller
         ]);
 
         CourseStudent::where(['course_id' => $course_id, 'student_id' => $student_id])->delete();
+
+        $teacher = '';
+        if (count($group->teachers)) {
+            $teacher = $group->teachers[0]->name;
+        }
+
+        Track::create([
+            'student_id' => $student_id,
+            'status' => 's',
+            'description' => 'Added to the selection #' . $group->id . ' ' . $group->level->name . ' ' . $teacher . ' ' . $group->branch->name
+        ]);
+
+        return 'done';
+    }
+    public function add_to_selection($student_id, $level_id = 0, $selection, $course_id = null)
+    {
+
+        if (!auth()->user()->can('add to selection')) {
+            return response()->json(['error' => 'This page is forbidden for you'], 403);
+        }
+
+        $gs = GroupStudent::where([
+            'group_id' => $selection,
+            'student_id' => $student_id,
+        ])->count();
+
+        if ($gs) {
+            return response()->json(['error' => "There student is already added to this group"], 422);
+        }
+        $level_admin = NULL;
+        if ($level_id)
+            $level_admin = LevelStudent::where(['level_id' => $level_id, 'student_id' => $student_id])->first();
+
+        $group = Group::with(['level', 'teachers', 'branch'])->whereId($selection)->first();
+        $group->students()->attach($student_id, [
+            'created_at' => now(),
+            'created_by' => auth()->user()->id,
+            'status' => 'iG',
+            'administrator_id' => isset($level_admin->administrator_id) ?? null,
+        ]);
+
+        if ($level_id)
+            LevelStudent::where(['level_id' => $level_id, 'student_id' => $student_id])->delete();
 
         $teacher = '';
         if (count($group->teachers)) {

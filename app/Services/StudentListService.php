@@ -26,6 +26,7 @@ class StudentListService
                                                   ) AS groups_json,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
+                                        t_groups.id as groups_id,
                                         t_levels.name as lavel_name,
                                         JSON_OBJECT(
                                                     "id", t_students.id,
@@ -62,12 +63,13 @@ class StudentListService
                                         and t_staff.id is not null
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
-
+        $groups=[];
         foreach ($results as $key => $result) {
             $results[$key]->groups  = json_decode($result->groups_json); unset($result->groups_json);
             $results[$key]->student = json_decode($result->student_json); unset($result->student_json);
             $results[$key]->url     = json_decode($result->url_json); unset($result->url_json);
+            $groups[$result->lavel_name][$result->groups_id][] = $results[$key]->groups;
         }
-        return $results;
+        return $groups;
     }
 }

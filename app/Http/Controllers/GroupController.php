@@ -41,9 +41,7 @@ class GroupController extends Controller
     }
 
     public function getGroupsWhichHasNewStudents(Request $request){
-
-        $branches = implode(",",$request->branches);
-        if ($branches) {
+        if ($request->branch_id) {
             $numbers_query = "SELECT
                         COUNT(gs.student_id) AS `number`,
                         (
@@ -64,7 +62,7 @@ class GroupController extends Controller
                     FROM t_group_student gs
                     LEFT JOIN t_groups g ON g.id=gs.group_id
                     WHERE
-                        g.branch_id IN (" . $branches . ")
+                        g.branch_id IN (" . $request->branch_id . ")
                         AND g.`status` = 'a'
                         AND gs.`status` = 'iG'
                         AND gs.`missed_trials` = 0
@@ -79,7 +77,7 @@ class GroupController extends Controller
             })
                 ->where('status', 'a')
                 ->whereNotIn('branch_id', config("branch.not_used_branches"))
-                ->whereIn('branch_id', $request->branches)
+                ->whereIn('branch_id', $request->branch_id)
                 ->with(['all_students_without_archive' => function ($q) {
                     $q->with("comments");
                     $q->where('group_student.status', 'iG');

@@ -76,8 +76,7 @@ class GroupController extends Controller
                 $q->where('group_student.missed_trials', 0);
             })
                 ->where('status', 'a')
-                ->whereRaw("((DAYOFWEEK(CURDATE()) IN (3, 5, 7) AND t_groups.days = 'tts') OR
-                        (DAYOFWEEK(CURDATE()) IN (1, 2, 4, 6) AND t_groups.days = 'mwf'))")
+                ->where('t_groups.days', 'tts')
                 ->whereNotIn('branch_id', config("branch.not_used_branches"))
                 ->where('branch_id', $request->branch_id)
                 ->with(['all_students_without_archive' => function ($q) {

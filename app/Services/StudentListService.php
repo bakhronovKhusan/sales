@@ -43,7 +43,7 @@ class StudentListService
                                         JSON_OBJECT(
                                             "activate", CONCAT("api/v1/hunter/activate/",t_group_student.group_id,"/",t_group_student.student_id),
                                             "de_activate", CONCAT("api/v1/hunter/de-activate/",t_group_student.group_id,"/",t_group_student.student_id),
-                                            "check_url", CONCAT("https://app.cambridgeonline.uz/cheque/",t_group_student.group_id,"/",t_group_student.student_id),
+                                            "check_url", CONCAT("https://app.cambridgeonline.uz/cheque/",t_group_student.group_id,"/",t_group_student.student_id)
                                         ) as url_json
                                     FROM t_group_student
                                     LEFT JOIN t_students ON t_students.id = t_group_student.student_id

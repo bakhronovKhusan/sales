@@ -41,8 +41,6 @@ class GroupController extends Controller
     }
 
     public function getGroupsWhichHasNewStudents(Request $request){
-        dd($request->branch_id);
-
         if ($request->branch_id) {
             $numbers_query = "SELECT
                         COUNT(gs.student_id) AS `number`,

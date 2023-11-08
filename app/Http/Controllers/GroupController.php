@@ -72,6 +72,7 @@ class GroupController extends Controller
 
             $numbers = DB::select($numbers_query);
 
+
             $groups = Group::whereHas('students', function ($q) {
                 $q->where('group_student.status', 'iG');
                 $q->where('group_student.missed_trials', 0);

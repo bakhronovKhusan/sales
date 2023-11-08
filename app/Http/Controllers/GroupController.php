@@ -76,8 +76,8 @@ class GroupController extends Controller
                 $q->where('group_student.status', 'iG');
                 $q->where('group_student.missed_trials', 0);
             })
-//                ->where('status', 'a')
-//                ->whereNotIn('branch_id', config("branch.not_used_branches"))
+                ->where('status', 'a')
+                ->whereNotIn('branch_id', config("branch.not_used_branches"))
 ////                ->whereIn('branch_id', $request->branches)
 //                ->with(['all_students_without_archive' => function ($q) {
 //                    $q->with("comments");

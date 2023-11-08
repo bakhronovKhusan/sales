@@ -69,8 +69,8 @@ class StudentListService
             $results[$key]->groups  = json_decode($result->groups_json); unset($result->groups_json);
             $results[$key]->student = json_decode($result->student_json); unset($result->student_json);
             $results[$key]->url     = json_decode($result->url_json); unset($result->url_json);
-            $results[$key]['group_example'][$result->lavel_name][$result->groups_id][] = $results[$key]->student;
+            $groups[$result->lavel_name][$result->groups_id][] = $results[$key]->student;
         }
-        return $results;
+        return $groups;
     }
 }

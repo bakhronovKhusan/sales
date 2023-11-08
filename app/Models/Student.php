@@ -95,7 +95,11 @@ class Student extends Model
             'updated_at'
         );
     }
-
+    public function in_group(){
+        return $this->belongsToMany('App\Models\Group', 'group_student')
+            ->withPivot('status', 'balance', 'lessons_left', 'created_at', 'exception_sum', 'updated_at')
+            ->wherePivot('status', 'iG');
+    }
     public function a_p1_in_groups()
     {
         return $this->belongsToMany('App\Models\Group', 'group_student')

@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Http\Resources\ResourceStudentList;
+use App\Models\GroupStudent;
+use App\Models\Level;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +18,12 @@ class StudentListService
         $results =  DB::select('SELECT JSON_OBJECT(
                                                     "id", t_groups.id,
                                                     "day", t_groups.days,
-                                                    "time", t_groups.time
-                                              ) AS groups_json,
+                                                    "time", t_groups.time,
+                                                    "info",CONCAT(CONCAT("W",IFNULL((SELECT week_num FROM t_group_roadmap WHERE
+                                                                  t_group_roadmap.group_id = t_group_student.group_id
+                                                                  ORDER by t_group_roadmap.id DESC LIMIT 1),"-new")), " ",
+                                                                    IFNULL(t_levels.name, ""), " ",IFNULL(t_groups.time, ""))
+                                                  ) AS groups_json,
                                         IFNULL(t_staff.id, "not exit!") as staff_id,
                                         t_group_student.status,
                                         t_levels.name as lavel_name,
@@ -33,16 +40,11 @@ class StudentListService
                                             WHEN t_group_student.status="np" THEN "NOT PAID YET"
                                             WHEN t_group_student.status="a" THEN "ACTIVE"
                                         END AS status_type,
-                                        CONCAT("api/v1/hunter/activate/",t_group_student.group_id,"/",t_group_student.student_id) as activate_url,
-                                        CONCAT("api/v1/hunter/de-activate/",t_group_student.group_id,"/",t_group_student.student_id) as de_activate_url,
-                                        CONCAT("https://app.cambridgeonline.uz/cheque/",t_group_student.group_id,"/",t_group_student.student_id) as check_url,
-                                        CONCAT(
-                                            CONCAT("W",
-                                                IFNULL((SELECT week_num FROM t_group_roadmap WHERE
-                                                      t_group_roadmap.group_id = t_group_student.group_id
-                                                      ORDER by t_group_roadmap.id DESC LIMIT 1),"-new")), " ",
-                                                IFNULL(t_levels.name, ""), " ",
-                                                IFNULL(t_groups.time, "")) as group_info
+                                        JSON_OBJECT(
+                                            "activate", CONCAT("api/v1/hunter/activate/",t_group_student.group_id,"/",t_group_student.student_id),
+                                            "de_activate", CONCAT("api/v1/hunter/de-activate/",t_group_student.group_id,"/",t_group_student.student_id),
+                                            "check_url", CONCAT("https://app.cambridgeonline.uz/cheque/",t_group_student.group_id,"/",t_group_student.student_id),
+                                        ) as url_json
                                     FROM t_group_student
                                     LEFT JOIN t_students ON t_students.id = t_group_student.student_id
                                     LEFT JOIN t_groups ON t_groups.id = t_group_student.group_id
@@ -60,9 +62,11 @@ class StudentListService
                                         and t_staff.id is not null
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
+        $return = [];
         foreach ($results as $key => $result) {
             $results[$key]->groups = json_decode($result->groups_json); unset($result->groups_json);
             $results[$key]->student = json_decode($result->student_json); unset($result->student_json);
+            $results[$key]->url = json_decode($result->url_json); unset($result->url_json);
         }
         return $results;
     }

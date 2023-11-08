@@ -64,12 +64,13 @@ class StudentListService
                                         '. $branch_id .'
                                     ORDER BY t_groups.created_at DESC');
         $groups=[];
+        $return = [];
         foreach ($results as $key => $result) {
             $results[$key]->groups  = json_decode($result->groups_json); unset($result->groups_json);
             $results[$key]->student = json_decode($result->student_json); unset($result->student_json);
             $results[$key]->url     = json_decode($result->url_json); unset($result->url_json);
-            $results[$key][$result->lavel_name][$result->groups_id][] = $results[$key]->student;
+            $results[$key]['group_example'][$result->lavel_name][$result->groups_id][] = $results[$key]->student;
         }
-        return $groups;
+        return $results;
     }
 }

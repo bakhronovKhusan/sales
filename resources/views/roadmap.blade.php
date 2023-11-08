@@ -63,9 +63,9 @@
                     display: inline-block;">
             <div  style="display: flex;gap: 10px;">
                 <a href=""><img src="https://sales-api.cambridgeonline.uz/img/logo.png" alt="logo"></a>
-                <p style="color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;">Study Plan <br> for Student</p>
+                <p style="font-family: 'CircularStd';color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;">Study Plan <br> for Student</p>
             </div>
-            <h2 style="padding-top: 15px;color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.06px;text-transform: capitalize;">
+            <h2 style="padding-top: 15px;color: #fff;font-size: 12px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.06px;text-transform: capitalize;font-family: 'CircularStd';">
                     {{ $student->name }} <br>
                             {{ $student->surname }}</h2>
             <h1 style="color: #fff;font-size: 32px;font-style: normal;font-weight: 700;line-height: 130%;letter-spacing: -0.16px;">{{ $level->name }}</h1>

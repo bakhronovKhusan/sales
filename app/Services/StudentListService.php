@@ -68,6 +68,6 @@ class StudentListService
             $results[$key]->student = json_decode($result->student_json); unset($result->student_json);
             $results[$key]->url     = json_decode($result->url_json); unset($result->url_json);
         }
-        return $return;
+        return $results;
     }
 }

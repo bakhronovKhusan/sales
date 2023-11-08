@@ -22,5 +22,6 @@ Route::group(['middleware' => 'redis.token.check'], function ($router) {
 
         });
         Route::get('user/{user_id}/roles/branches', 'UserController@get_user_roles_and_branches');
+        Route::get('branch/{branch_id}/level/{level_id}/{type}', 'GroupController@get_selection_or_group');
     });
 });

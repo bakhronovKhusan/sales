@@ -21,5 +21,6 @@ Route::group(['middleware' => 'redis.token.check'], function ($router) {
         Route::group(['prefix'=>'check_group'], function ($route){
 
         });
+        Route::get('user/{user_id}/roles/branches', 'UserController@get_user_roles_and_branches');
     });
 });
